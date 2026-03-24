@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" fill="#1a1a1a" font-size="24" font-weight="bold">The Three Non-Comparison Sorts</text>
+  <text x="450" y="54" text-anchor="middle" fill="#777" font-size="13">These sorts bypass the O(n log n) lower bound by distributing elements by value instead of comparing them</text>
+
+  <!-- ===== COUNTING SORT ===== -->
+  <rect x="20" y="74" width="860" height="140" rx="10" fill="#fff" stroke="#2e7d32" stroke-width="2"/>
+  <rect x="20" y="74" width="860" height="32" rx="10" fill="#2e7d32"/>
+  <rect x="20" y="90" width="860" height="16" fill="#2e7d32"/>
+  <text x="450" y="96" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">Counting Sort</text>
+
+  <text x="40" y="128" fill="#2c3e50" font-size="13" font-weight="bold">Strategy:</text>
+  <text x="130" y="128" fill="#555" font-size="12">Count how many times each value appears, then place elements directly into their sorted position using the counts.</text>
+
+  <text x="40" y="150" fill="#2c3e50" font-size="13" font-weight="bold">Key idea:</text>
+  <text x="130" y="150" fill="#555" font-size="12">No comparisons needed &#x2014; if you know there are 3 fives, you know exactly where the fives go in the output.</text>
+
+  <text x="40" y="176" fill="#2c3e50" font-size="12" font-weight="bold">Time:</text>
+  <text x="88" y="176" fill="#27ae60" font-size="12" font-weight="bold">O(n + k)</text>
+  <text x="170" y="176" fill="#888" font-size="11">(k = value range)</text>
+  <text x="310" y="176" fill="#2c3e50" font-size="12" font-weight="bold">Space:</text>
+  <text x="362" y="176" fill="#e67e22" font-size="12" font-weight="bold">O(k)</text>
+  <text x="400" y="176" fill="#888" font-size="11">(count array)</text>
+  <text x="530" y="176" fill="#2c3e50" font-size="12" font-weight="bold">Stable:</text>
+  <text x="586" y="176" fill="#27ae60" font-size="12" font-weight="bold">Yes</text>
+
+  <text x="40" y="200" fill="#888" font-size="11" font-style="italic">Think: Tallying exam scores into 101 buckets (0&#x2013;100), then reading them out in order.</text>
+
+  <!-- ===== BUCKET SORT ===== -->
+  <rect x="20" y="224" width="860" height="140" rx="10" fill="#fff" stroke="#1565c0" stroke-width="2"/>
+  <rect x="20" y="224" width="860" height="32" rx="10" fill="#1565c0"/>
+  <rect x="20" y="240" width="860" height="16" fill="#1565c0"/>
+  <text x="450" y="246" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">Bucket Sort</text>
+
+  <text x="40" y="278" fill="#2c3e50" font-size="13" font-weight="bold">Strategy:</text>
+  <text x="130" y="278" fill="#555" font-size="12">Distribute elements into range-based buckets. Sort each bucket individually (often with insertion sort). Concatenate.</text>
+
+  <text x="40" y="300" fill="#2c3e50" font-size="13" font-weight="bold">Key idea:</text>
+  <text x="130" y="300" fill="#555" font-size="12">If data is uniformly distributed, each bucket gets ~n/k elements &#x2014; sorting small buckets is fast.</text>
+
+  <text x="40" y="326" fill="#2c3e50" font-size="12" font-weight="bold">Time:</text>
+  <text x="88" y="326" fill="#27ae60" font-size="12" font-weight="bold">O(n + k) avg</text>
+  <text x="200" y="326" fill="#888" font-size="11">|</text>
+  <text x="212" y="326" fill="#e74c3c" font-size="12" font-weight="bold">O(n&#xB2;) worst</text>
+  <text x="320" y="326" fill="#888" font-size="11">(all in one bucket)</text>
+  <text x="500" y="326" fill="#2c3e50" font-size="12" font-weight="bold">Space:</text>
+  <text x="552" y="326" fill="#e67e22" font-size="12" font-weight="bold">O(n + k)</text>
+  <text x="660" y="326" fill="#2c3e50" font-size="12" font-weight="bold">Stable:</text>
+  <text x="716" y="326" fill="#27ae60" font-size="12" font-weight="bold">Yes*</text>
+
+  <text x="40" y="350" fill="#888" font-size="11" font-style="italic">Think: Sorting mail by ZIP code &#x2014; toss each letter into a bin by first digit, then sort within each bin.</text>
+
+  <!-- ===== RADIX SORT ===== -->
+  <rect x="20" y="374" width="860" height="140" rx="10" fill="#fff" stroke="#6a1b9a" stroke-width="2"/>
+  <rect x="20" y="374" width="860" height="32" rx="10" fill="#6a1b9a"/>
+  <rect x="20" y="390" width="860" height="16" fill="#6a1b9a"/>
+  <text x="450" y="396" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">Radix Sort (LSD)</text>
+
+  <text x="40" y="428" fill="#2c3e50" font-size="13" font-weight="bold">Strategy:</text>
+  <text x="130" y="428" fill="#555" font-size="12">Sort by each digit position, starting from the least significant. Uses counting sort as a stable subroutine for each pass.</text>
+
+  <text x="40" y="450" fill="#2c3e50" font-size="13" font-weight="bold">Key idea:</text>
+  <text x="130" y="450" fill="#555" font-size="12">After d passes (one per digit), the array is fully sorted. Stability ensures earlier passes aren&#x2019;t undone by later ones.</text>
+
+  <text x="40" y="476" fill="#2c3e50" font-size="12" font-weight="bold">Time:</text>
+  <text x="88" y="476" fill="#27ae60" font-size="12" font-weight="bold">O(d &#xD7; (n + k))</text>
+  <text x="230" y="476" fill="#888" font-size="11">(d=digits, k=base 10)</text>
+  <text x="430" y="476" fill="#2c3e50" font-size="12" font-weight="bold">Space:</text>
+  <text x="482" y="476" fill="#e67e22" font-size="12" font-weight="bold">O(n + k)</text>
+  <text x="580" y="476" fill="#2c3e50" font-size="12" font-weight="bold">Stable:</text>
+  <text x="636" y="476" fill="#27ae60" font-size="12" font-weight="bold">Yes</text>
+
+  <text x="40" y="500" fill="#888" font-size="11" font-style="italic">Think: Sorting library cards &#x2014; first by last digit of the call number, then second-to-last, and so on.</text>
+
+  <!-- ===== BOTTOM: Key Contrast ===== -->
+  <rect x="20" y="528" width="860" height="58" rx="10" fill="#f4f6f7" stroke="#bdc3c7" stroke-width="1.5"/>
+  <text x="450" y="548" text-anchor="middle" fill="#2c3e50" font-size="12">
+    <tspan x="450" dy="0">Comparison sorts (merge, quick, heap) cannot beat <tspan font-weight="bold">O(n log n)</tspan>. These non-comparison sorts achieve</tspan>
+    <tspan x="450" dy="16"><tspan font-weight="bold" fill="#27ae60">O(n + k)</tspan> by exploiting integer values &#x2014; but only work when the value range k is known and reasonable.</tspan>
+  </text>
+</svg>

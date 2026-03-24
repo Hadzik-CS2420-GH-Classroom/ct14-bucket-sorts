@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Bucket Sort &#x2014; Distribution and Concatenation</text>
+  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">BucketSorts.cpp::bucket_sort() &#x2014; three phases: distribute, sort buckets, concatenate</text>
+
+  <!-- Code block on left -->
+  <rect x="20" y="64" width="400" height="200" rx="8" fill="#1e1e2e"/>
+  <text x="35" y="86" fill="#6c7086" font-size="11" font-style="italic">// Phase 1: Distribute into buckets</text>
+  <text x="35" y="104" fill="#cba6f7" font-size="11">for</text><text x="55" y="104" fill="#cdd6f4" font-size="11"> (</text><text x="63" y="104" fill="#cba6f7" font-size="11">int</text><text x="83" y="104" fill="#cdd6f4" font-size="11"> val : data) {</text>
+  <text x="50" y="122" fill="#cba6f7" font-size="11">int</text><text x="70" y="122" fill="#cdd6f4" font-size="11"> idx = (val - min) / range_per_bucket;</text>
+  <text x="50" y="140" fill="#cdd6f4" font-size="11">buckets[idx].push_back(val);</text>
+  <text x="35" y="158" fill="#cdd6f4" font-size="11">}</text>
+  <text x="35" y="182" fill="#6c7086" font-size="11" font-style="italic">// Phase 2: Sort each bucket</text>
+  <text x="35" y="200" fill="#cba6f7" font-size="11">for</text><text x="55" y="200" fill="#cdd6f4" font-size="11"> (</text><text x="63" y="200" fill="#cba6f7" font-size="11">auto</text><text x="90" y="200" fill="#cdd6f4" font-size="11">&amp; b : buckets) </text><text x="180" y="200" fill="#89dceb" font-size="11">sort</text><text x="200" y="200" fill="#cdd6f4" font-size="11">(b);</text>
+  <text x="35" y="224" fill="#6c7086" font-size="11" font-style="italic">// Phase 3: Concatenate buckets back into data</text>
+  <text x="35" y="248" fill="#6c7086" font-size="11" font-style="italic">// Each bucket is already sorted, and bucket ranges</text>
+  <text x="35" y="262" fill="#6c7086" font-size="11" font-style="italic">// don&#x2019;t overlap, so concatenation preserves order.</text>
+
+  <!-- Visual on right: distribution -->
+  <text x="450" y="82" fill="#1565c0" font-size="13" font-weight="bold">Input: [42, 15, 73, 28, 91, 5]</text>
+  <text x="450" y="100" fill="#888" font-size="11">3 buckets, range_per_bucket = (91-5+1)/3 = 29</text>
+
+  <!-- Arrows from values to buckets -->
+  <text x="450" y="126" fill="#555" font-size="11">5 &#x2192; (5-5)/29 = <tspan font-weight="bold" fill="#2e7d32">bucket 0</tspan></text>
+  <text x="450" y="144" fill="#555" font-size="11">15 &#x2192; (15-5)/29 = <tspan font-weight="bold" fill="#2e7d32">bucket 0</tspan></text>
+  <text x="450" y="162" fill="#555" font-size="11">28 &#x2192; (28-5)/29 = <tspan font-weight="bold" fill="#2e7d32">bucket 0</tspan></text>
+  <text x="650" y="126" fill="#555" font-size="11">42 &#x2192; (42-5)/29 = <tspan font-weight="bold" fill="#1565c0">bucket 1</tspan></text>
+  <text x="650" y="144" fill="#555" font-size="11">73 &#x2192; (73-5)/29 = <tspan font-weight="bold" fill="#6a1b9a">bucket 2</tspan></text>
+  <text x="650" y="162" fill="#555" font-size="11">91 &#x2192; (91-5)/29 = <tspan font-weight="bold" fill="#6a1b9a">bucket 2</tspan></text>
+
+  <!-- Buckets -->
+  <rect x="450" y="180" width="130" height="40" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1"/>
+  <text x="458" y="196" fill="#2e7d32" font-size="10" font-weight="bold">B0:</text>
+  <text x="485" y="210" fill="#333" font-size="11">[15, 28, 5] &#x2192; [5, 15, 28]</text>
+
+  <rect x="590" y="180" width="100" height="40" rx="5" fill="#e3f2fd" stroke="#1565c0" stroke-width="1"/>
+  <text x="598" y="196" fill="#1565c0" font-size="10" font-weight="bold">B1:</text>
+  <text x="625" y="210" fill="#333" font-size="11">[42]</text>
+
+  <rect x="700" y="180" width="130" height="40" rx="5" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1"/>
+  <text x="708" y="196" fill="#6a1b9a" font-size="10" font-weight="bold">B2:</text>
+  <text x="735" y="210" fill="#333" font-size="11">[73, 91]</text>
+
+  <!-- Concatenate -->
+  <text x="450" y="248" fill="#27ae60" font-size="12" font-weight="bold">Concatenate: [5, 15, 28] + [42] + [73, 91]</text>
+  <rect x="450" y="258" width="38" height="24" rx="4" fill="#27ae60"/><text x="469" y="275" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">5</text>
+  <rect x="494" y="258" width="38" height="24" rx="4" fill="#27ae60"/><text x="513" y="275" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">15</text>
+  <rect x="538" y="258" width="38" height="24" rx="4" fill="#27ae60"/><text x="557" y="275" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">28</text>
+  <rect x="582" y="258" width="38" height="24" rx="4" fill="#27ae60"/><text x="601" y="275" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">42</text>
+  <rect x="626" y="258" width="38" height="24" rx="4" fill="#27ae60"/><text x="645" y="275" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">73</text>
+  <rect x="670" y="258" width="38" height="24" rx="4" fill="#27ae60"/><text x="689" y="275" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">91</text>
+
+  <!-- Key insight -->
+  <rect x="20" y="310" width="860" height="76" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="40" y="334" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">O(n) to distribute</tspan> + <tspan font-weight="bold">O(small) to sort each bucket</tspan> + <tspan font-weight="bold">O(n) to concatenate</tspan> = O(n+k) when distribution is uniform.</text>
+  <text x="40" y="356" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold" fill="#c62828">Worst case:</tspan> all elements in one bucket &#x2192; the per-bucket sort dominates &#x2192; O(n&#xB2;) if using insertion sort.</text>
+  <text x="40" y="378" fill="#333" font-size="12">&#x2022; Bucket ranges don&#x2019;t overlap, so concatenating sorted buckets always produces a sorted result.</text>
+</svg>

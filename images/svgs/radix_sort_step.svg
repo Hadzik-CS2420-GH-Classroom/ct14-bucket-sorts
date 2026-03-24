@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Radix Sort &#x2014; One Digit Pass (LSD)</text>
+  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">BucketSorts.cpp::radix_sort() &#x2014; extract digit, counting sort on that digit, repeat</text>
+
+  <!-- Code block on left -->
+  <rect x="20" y="64" width="400" height="180" rx="8" fill="#1e1e2e"/>
+  <text x="35" y="86" fill="#6c7086" font-size="11" font-style="italic">// Main loop: one pass per digit</text>
+  <text x="35" y="104" fill="#cba6f7" font-size="11">for</text><text x="55" y="104" fill="#cdd6f4" font-size="11"> (</text><text x="63" y="104" fill="#cba6f7" font-size="11">int</text><text x="83" y="104" fill="#cdd6f4" font-size="11"> exp = </text><text x="117" y="104" fill="#fab387" font-size="11">1</text><text x="125" y="104" fill="#cdd6f4" font-size="11">; max_val / exp &gt; </text><text x="242" y="104" fill="#fab387" font-size="11">0</text><text x="250" y="104" fill="#cdd6f4" font-size="11">; exp *= </text><text x="300" y="104" fill="#fab387" font-size="11">10</text><text x="316" y="104" fill="#cdd6f4" font-size="11">)</text>
+  <text x="50" y="122" fill="#89dceb" font-size="11">counting_sort_by_digit</text><text x="210" y="122" fill="#cdd6f4" font-size="11">(data, exp);</text>
+  <text x="35" y="148" fill="#6c7086" font-size="11" font-style="italic">// Extract digit at position exp:</text>
+  <text x="35" y="166" fill="#cba6f7" font-size="11">int</text><text x="55" y="166" fill="#cdd6f4" font-size="11"> digit = (value / exp) % </text><text x="230" y="166" fill="#fab387" font-size="11">10</text><text x="246" y="166" fill="#cdd6f4" font-size="11">;</text>
+  <text x="35" y="192" fill="#6c7086" font-size="11" font-style="italic">// exp=1: ones digit</text>
+  <text x="35" y="208" fill="#6c7086" font-size="11" font-style="italic">// exp=10: tens digit</text>
+  <text x="35" y="224" fill="#6c7086" font-size="11" font-style="italic">// exp=100: hundreds digit</text>
+
+  <!-- Visual: one pass example -->
+  <text x="450" y="82" fill="#6a1b9a" font-size="13" font-weight="bold">Example: Pass 1 (ones digit, exp=1)</text>
+  <text x="450" y="100" fill="#888" font-size="11">Input: [170, 45, 75, 90, 802, 24, 2, 66]</text>
+
+  <!-- Digit extraction -->
+  <text x="450" y="124" fill="#555" font-size="11">Extract: (value / 1) % 10</text>
+  <text x="450" y="144" fill="#555" font-size="11">170&#x2192;<tspan font-weight="bold" fill="#e74c3c">0</tspan> &nbsp; 45&#x2192;<tspan font-weight="bold" fill="#e74c3c">5</tspan> &nbsp; 75&#x2192;<tspan font-weight="bold" fill="#e74c3c">5</tspan> &nbsp; 90&#x2192;<tspan font-weight="bold" fill="#e74c3c">0</tspan> &nbsp; 802&#x2192;<tspan font-weight="bold" fill="#e74c3c">2</tspan> &nbsp; 24&#x2192;<tspan font-weight="bold" fill="#e74c3c">4</tspan> &nbsp; 2&#x2192;<tspan font-weight="bold" fill="#e74c3c">2</tspan> &nbsp; 66&#x2192;<tspan font-weight="bold" fill="#e74c3c">6</tspan></text>
+
+  <!-- Count by digit (0-9) -->
+  <text x="450" y="170" fill="#555" font-size="11" font-weight="bold">Count by ones digit:</text>
+  <text x="450" y="186" fill="#555" font-size="10">digit: 0  1  2  3  4  5  6  7  8  9</text>
+  <text x="450" y="200" fill="#2e7d32" font-size="10" font-weight="bold">count: 2  0  2  0  1  2  1  0  0  0</text>
+
+  <!-- Stable sort result -->
+  <text x="450" y="228" fill="#555" font-size="12" font-weight="bold">Stable counting sort by ones digit:</text>
+  <rect x="450" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="473" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">17<tspan fill="#ff0">0</tspan></text>
+  <rect x="502" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="525" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">9<tspan fill="#ff0">0</tspan></text>
+  <rect x="554" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="577" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">80<tspan fill="#ff0">2</tspan></text>
+  <rect x="606" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="629" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold"><tspan fill="#ff0">2</tspan></text>
+  <rect x="658" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="681" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">2<tspan fill="#ff0">4</tspan></text>
+  <rect x="710" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="733" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">4<tspan fill="#ff0">5</tspan></text>
+  <rect x="762" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="785" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">7<tspan fill="#ff0">5</tspan></text>
+  <rect x="814" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="837" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">6<tspan fill="#ff0">6</tspan></text>
+
+  <text x="450" y="284" fill="#888" font-size="11">Ones digits are now in order: 0, 0, 2, 2, 4, 5, 5, 6 &#x2714;</text>
+  <text x="450" y="300" fill="#888" font-size="11">Next pass (exp=10) will sort by tens digit, preserving this ordering via stability.</text>
+
+  <!-- Key insight -->
+  <rect x="20" y="320" width="860" height="86" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="40" y="344" fill="#333" font-size="12">&#x2022; Each pass is just <tspan font-weight="bold">counting sort on one digit</tspan> (k=10 for base 10). Cost per pass: O(n + 10) &#x2248; O(n).</text>
+  <text x="40" y="366" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Stability is critical</tspan> &#x2014; if the per-digit sort weren&#x2019;t stable, earlier digit orderings would be destroyed.</text>
+  <text x="40" y="388" fill="#333" font-size="12">&#x2022; After d passes (one per digit), every digit position has been sorted &#x2192; the full numbers are sorted.</text>
+</svg>

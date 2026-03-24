@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <text x="450" y="30" text-anchor="middle" fill="#1a1a1a" font-size="22" font-weight="bold">Non-Comparison Sorts &#x2014; Side-by-Side</text>
+
+  <!-- Table Header -->
+  <rect x="20" y="50" width="860" height="34" rx="6" fill="#4a148c"/>
+  <text x="90" y="72" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Algorithm</text>
+  <text x="220" y="72" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Time (avg)</text>
+  <text x="340" y="72" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Time (worst)</text>
+  <text x="450" y="72" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Space</text>
+  <text x="540" y="72" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Stable?</text>
+  <text x="700" y="72" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Best When</text>
+
+  <!-- Counting Sort -->
+  <rect x="20" y="84" width="860" height="36" fill="#ede7f6"/>
+  <text x="90" y="107" text-anchor="middle" fill="#2e7d32" font-size="13" font-weight="bold">Counting Sort</text>
+  <text x="220" y="107" text-anchor="middle" fill="#1b5e20" font-size="13" font-weight="bold">O(n + k)</text>
+  <text x="340" y="107" text-anchor="middle" fill="#333" font-size="12">O(n + k)</text>
+  <text x="450" y="107" text-anchor="middle" fill="#e65100" font-size="12">O(k)</text>
+  <text x="540" y="107" text-anchor="middle" fill="#27ae60" font-size="13" font-weight="bold">Yes</text>
+  <text x="700" y="107" text-anchor="middle" fill="#555" font-size="11">Small value range (k &#x226A; n)</text>
+
+  <line x1="20" y1="120" x2="880" y2="120" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- Bucket Sort -->
+  <rect x="20" y="120" width="860" height="36" fill="#fff"/>
+  <text x="90" y="143" text-anchor="middle" fill="#1565c0" font-size="13" font-weight="bold">Bucket Sort</text>
+  <text x="220" y="143" text-anchor="middle" fill="#1b5e20" font-size="13" font-weight="bold">O(n + k)</text>
+  <text x="340" y="143" text-anchor="middle" fill="#c62828" font-size="13" font-weight="bold">O(n&#xB2;)</text>
+  <text x="450" y="143" text-anchor="middle" fill="#e65100" font-size="12">O(n + k)</text>
+  <text x="540" y="143" text-anchor="middle" fill="#27ae60" font-size="13" font-weight="bold">Yes*</text>
+  <text x="700" y="143" text-anchor="middle" fill="#555" font-size="11">Uniform distribution</text>
+
+  <line x1="20" y1="156" x2="880" y2="156" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- Radix Sort -->
+  <rect x="20" y="156" width="860" height="36" fill="#ede7f6"/>
+  <text x="90" y="179" text-anchor="middle" fill="#6a1b9a" font-size="13" font-weight="bold">Radix Sort</text>
+  <text x="220" y="179" text-anchor="middle" fill="#1b5e20" font-size="13" font-weight="bold">O(d(n+k))</text>
+  <text x="340" y="179" text-anchor="middle" fill="#333" font-size="12">O(d(n+k))</text>
+  <text x="450" y="179" text-anchor="middle" fill="#e65100" font-size="12">O(n + k)</text>
+  <text x="540" y="179" text-anchor="middle" fill="#27ae60" font-size="13" font-weight="bold">Yes</text>
+  <text x="700" y="179" text-anchor="middle" fill="#555" font-size="11">Few digits, large n</text>
+
+  <line x1="20" y1="192" x2="880" y2="192" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- Notes -->
+  <text x="30" y="216" fill="#888" font-size="11">k = range of values (counting/bucket) or base (radix, typically 10) &nbsp;&nbsp;&nbsp; d = number of digits &nbsp;&nbsp;&nbsp; * = if per-bucket sort is stable</text>
+
+  <!-- Bottom comparison callout -->
+  <rect x="20" y="238" width="860" height="86" rx="10" fill="#f4f6f7" stroke="#bdc3c7" stroke-width="1.5"/>
+  <text x="450" y="260" text-anchor="middle" fill="#2c3e50" font-size="14" font-weight="bold">Comparison Sorts vs. Non-Comparison Sorts</text>
+  <text x="40" y="284" fill="#555" font-size="12"><tspan font-weight="bold">Comparison sorts</tspan> (merge, quick, heap): work on any data type with &lt; operator, but cannot beat <tspan font-weight="bold" fill="#c62828">O(n log n)</tspan>.</text>
+  <text x="40" y="306" fill="#555" font-size="12"><tspan font-weight="bold">Non-comparison sorts</tspan> (counting, bucket, radix): achieve <tspan font-weight="bold" fill="#27ae60">O(n + k)</tspan>, but only work on integers with a known, bounded range.</text>
+</svg>
