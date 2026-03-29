@@ -5,14 +5,14 @@
   <text x="450" y="32" text-anchor="middle" fill="#1a1a1a" font-size="24" font-weight="bold">Counting Sort &#x2014; Complete Walkthrough</text>
   <text x="450" y="54" text-anchor="middle" fill="#777" font-size="13">Count occurrences, then place directly. No comparisons needed.</text>
 
-  <!-- Legend -->
-  <rect x="660" y="18" width="220" height="48" rx="8" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
-  <rect x="675" y="28" width="14" height="14" rx="3" fill="#3498db"/>
-  <text x="695" y="40" fill="#333" font-size="11">Input data</text>
-  <rect x="675" y="46" width="14" height="14" rx="3" fill="#27ae60"/>
-  <text x="695" y="58" fill="#333" font-size="11">Sorted output</text>
-  <text x="790" y="40" fill="#333" font-size="11" font-weight="bold">Time: O(n+k)</text>
-  <text x="790" y="58" fill="#333" font-size="11" font-weight="bold">Space: O(k)</text>
+  <!-- Legend (right side, aligned with input row) -->
+  <rect x="660" y="64" width="220" height="48" rx="8" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+  <rect x="675" y="74" width="14" height="14" rx="3" fill="#3498db"/>
+  <text x="695" y="86" fill="#333" font-size="11">Input data</text>
+  <rect x="675" y="92" width="14" height="14" rx="3" fill="#27ae60"/>
+  <text x="695" y="104" fill="#333" font-size="11">Sorted output</text>
+  <text x="790" y="86" fill="#333" font-size="11" font-weight="bold">Time: O(n+k)</text>
+  <text x="790" y="104" fill="#333" font-size="11" font-weight="bold">Space: O(k)</text>
 
   <!-- ===== STEP 0: Input ===== -->
   <text x="30" y="90" fill="#1a1a1a" font-size="15" font-weight="bold">Input:</text>
