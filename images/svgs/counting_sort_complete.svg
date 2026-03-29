@@ -6,13 +6,13 @@
   <text x="450" y="54" text-anchor="middle" fill="#777" font-size="13">Count occurrences, then place directly. No comparisons needed.</text>
 
   <!-- Legend -->
-  <rect x="660" y="70" width="220" height="60" rx="8" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
-  <rect x="675" y="82" width="14" height="14" rx="3" fill="#3498db"/>
-  <text x="695" y="94" fill="#333" font-size="11">Input data</text>
-  <rect x="675" y="102" width="14" height="14" rx="3" fill="#27ae60"/>
-  <text x="695" y="114" fill="#333" font-size="11">Sorted output</text>
-  <text x="790" y="94" fill="#333" font-size="11" font-weight="bold">Time: O(n+k)</text>
-  <text x="790" y="114" fill="#333" font-size="11" font-weight="bold">Space: O(k)</text>
+  <rect x="660" y="18" width="220" height="48" rx="8" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+  <rect x="675" y="28" width="14" height="14" rx="3" fill="#3498db"/>
+  <text x="695" y="40" fill="#333" font-size="11">Input data</text>
+  <rect x="675" y="46" width="14" height="14" rx="3" fill="#27ae60"/>
+  <text x="695" y="58" fill="#333" font-size="11">Sorted output</text>
+  <text x="790" y="40" fill="#333" font-size="11" font-weight="bold">Time: O(n+k)</text>
+  <text x="790" y="58" fill="#333" font-size="11" font-weight="bold">Space: O(k)</text>
 
   <!-- ===== STEP 0: Input ===== -->
   <text x="30" y="90" fill="#1a1a1a" font-size="15" font-weight="bold">Input:</text>
