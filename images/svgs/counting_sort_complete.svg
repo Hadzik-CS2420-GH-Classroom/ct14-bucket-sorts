@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1040" font-family="'Segoe UI', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 950" font-family="'Segoe UI', Arial, sans-serif">
   <rect width="100%" height="100%" fill="white"/>
 
   <!-- Title -->
@@ -58,7 +58,7 @@
   <text x="460" y="244" fill="#8e44ad" font-size="11" font-weight="bold">Index formula: count[value - min]</text>
 
   <!-- ===== STEP 1c: Tally (scan input, increment counts) ===== -->
-  <rect x="20" y="272" width="860" height="310" rx="8" fill="#fff" stroke="#e65100" stroke-width="1.5"/>
+  <rect x="20" y="272" width="860" height="248" rx="8" fill="#fff" stroke="#e65100" stroke-width="1.5"/>
   <text x="35" y="294" fill="#e65100" font-size="14" font-weight="bold">Step 1c: Tally</text>
   <text x="145" y="294" fill="#888" font-size="11">Scan input left to right. For each element: index = value - min, then count[index]++</text>
 
@@ -107,56 +107,63 @@
   <text x="760" y="456" fill="#8e44ad" font-size="10">duplicate!</text>
 
   <!-- Final count array visual -->
-  <text x="35" y="556" fill="#2e7d32" font-size="11" font-weight="bold">Final:</text>
-  <rect x="100" y="540" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="121" y="557" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">1</text>
-  <rect x="148" y="540" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="169" y="557" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">2</text>
-  <rect x="196" y="540" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="217" y="557" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">0</text>
-  <rect x="244" y="540" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="265" y="557" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">2</text>
-  <rect x="292" y="540" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="313" y="557" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">0</text>
-  <rect x="340" y="540" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="361" y="557" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">0</text>
-  <rect x="388" y="540" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="409" y="557" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">1</text>
-  <text x="460" y="557" fill="#e65100" font-size="11" font-weight="bold">&#x2190; one 11, two 12s, zero 13s, two 14s, zero 15s/16s, one 17</text>
+  <text x="35" y="488" fill="#2e7d32" font-size="11" font-weight="bold">Final:</text>
+  <!-- Value labels above -->
+  <text x="121" y="482" text-anchor="middle" fill="#555" font-size="10">11</text>
+  <text x="169" y="482" text-anchor="middle" fill="#555" font-size="10">12</text>
+  <text x="217" y="482" text-anchor="middle" fill="#555" font-size="10">13</text>
+  <text x="265" y="482" text-anchor="middle" fill="#555" font-size="10">14</text>
+  <text x="313" y="482" text-anchor="middle" fill="#555" font-size="10">15</text>
+  <text x="361" y="482" text-anchor="middle" fill="#555" font-size="10">16</text>
+  <text x="409" y="482" text-anchor="middle" fill="#555" font-size="10">17</text>
+  <!-- Count boxes -->
+  <rect x="100" y="486" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="121" y="503" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">1</text>
+  <rect x="148" y="486" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="169" y="503" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">2</text>
+  <rect x="196" y="486" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="217" y="503" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">0</text>
+  <rect x="244" y="486" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="265" y="503" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">2</text>
+  <rect x="292" y="486" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="313" y="503" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">0</text>
+  <rect x="340" y="486" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="361" y="503" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">0</text>
+  <rect x="388" y="486" width="42" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><text x="409" y="503" text-anchor="middle" fill="#2e7d32" font-size="12" font-weight="bold">1</text>
 
   <!-- ===== STEP 2: Place elements ===== -->
-  <rect x="20" y="592" width="860" height="160" rx="8" fill="#fff" stroke="#4527a0" stroke-width="1.5"/>
-  <text x="35" y="614" fill="#4527a0" font-size="14" font-weight="bold">Step 2: Place elements using counts</text>
-  <text x="330" y="614" fill="#888" font-size="11">Walk the count array left to right, placing each value count[i] times. O(n + k)</text>
+  <rect x="20" y="530" width="860" height="160" rx="8" fill="#fff" stroke="#4527a0" stroke-width="1.5"/>
+  <text x="35" y="552" fill="#4527a0" font-size="14" font-weight="bold">Step 2: Place elements using counts</text>
+  <text x="330" y="552" fill="#888" font-size="11">Walk the count array left to right, placing each value count[i] times. O(n + k)</text>
 
-  <text x="35" y="642" fill="#555" font-size="12">count[0]=1 &#x2192; place one 11</text>
-  <rect x="300" y="628" width="42" height="24" rx="4" fill="#27ae60"/><text x="321" y="645" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">11</text>
+  <text x="35" y="580" fill="#555" font-size="12">count[0]=1 &#x2192; place one 11</text>
+  <rect x="300" y="566" width="42" height="24" rx="4" fill="#27ae60"/><text x="321" y="583" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">11</text>
 
-  <text x="35" y="668" fill="#555" font-size="12">count[1]=2 &#x2192; place two 12s</text>
-  <rect x="300" y="654" width="42" height="24" rx="4" fill="#27ae60"/><text x="321" y="671" text-anchor="middle" fill="#fff" font-size="12">11</text>
-  <rect x="348" y="654" width="42" height="24" rx="4" fill="#27ae60"/><text x="369" y="671" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">12</text>
-  <rect x="396" y="654" width="42" height="24" rx="4" fill="#27ae60"/><text x="417" y="671" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">12</text>
+  <text x="35" y="606" fill="#555" font-size="12">count[1]=2 &#x2192; place two 12s</text>
+  <rect x="300" y="592" width="42" height="24" rx="4" fill="#27ae60"/><text x="321" y="609" text-anchor="middle" fill="#fff" font-size="12">11</text>
+  <rect x="348" y="592" width="42" height="24" rx="4" fill="#27ae60"/><text x="369" y="609" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">12</text>
+  <rect x="396" y="592" width="42" height="24" rx="4" fill="#27ae60"/><text x="417" y="609" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">12</text>
 
-  <text x="35" y="694" fill="#555" font-size="12">count[2]=0 skip, count[3]=2 place two 14s, count[4,5]=0 skip, count[6]=1 place one 17</text>
-  <rect x="300" y="702" width="42" height="24" rx="4" fill="#27ae60"/><text x="321" y="719" text-anchor="middle" fill="#fff" font-size="12">11</text>
-  <rect x="348" y="702" width="42" height="24" rx="4" fill="#27ae60"/><text x="369" y="719" text-anchor="middle" fill="#fff" font-size="12">12</text>
-  <rect x="396" y="702" width="42" height="24" rx="4" fill="#27ae60"/><text x="417" y="719" text-anchor="middle" fill="#fff" font-size="12">12</text>
-  <rect x="444" y="702" width="42" height="24" rx="4" fill="#27ae60"/><text x="465" y="719" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">14</text>
-  <rect x="492" y="702" width="42" height="24" rx="4" fill="#27ae60"/><text x="513" y="719" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">14</text>
-  <rect x="540" y="702" width="42" height="24" rx="4" fill="#27ae60"/><text x="561" y="719" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">17</text>
-  <text x="600" y="719" fill="#27ae60" font-size="12" font-weight="bold">&#x2190; done!</text>
+  <text x="35" y="632" fill="#555" font-size="12">count[2]=0 skip, count[3]=2 place two 14s, count[4,5]=0 skip, count[6]=1 place one 17</text>
+  <rect x="300" y="640" width="42" height="24" rx="4" fill="#27ae60"/><text x="321" y="657" text-anchor="middle" fill="#fff" font-size="12">11</text>
+  <rect x="348" y="640" width="42" height="24" rx="4" fill="#27ae60"/><text x="369" y="657" text-anchor="middle" fill="#fff" font-size="12">12</text>
+  <rect x="396" y="640" width="42" height="24" rx="4" fill="#27ae60"/><text x="417" y="657" text-anchor="middle" fill="#fff" font-size="12">12</text>
+  <rect x="444" y="640" width="42" height="24" rx="4" fill="#27ae60"/><text x="465" y="657" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">14</text>
+  <rect x="492" y="640" width="42" height="24" rx="4" fill="#27ae60"/><text x="513" y="657" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">14</text>
+  <rect x="540" y="640" width="42" height="24" rx="4" fill="#27ae60"/><text x="561" y="657" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">17</text>
+  <text x="600" y="657" fill="#27ae60" font-size="12" font-weight="bold">&#x2190; done!</text>
 
   <!-- ===== RESULT ===== -->
-  <rect x="20" y="766" width="860" height="56" rx="8" fill="#fff" stroke="#27ae60" stroke-width="2"/>
-  <text x="35" y="790" fill="#27ae60" font-size="14" font-weight="bold">Result:</text>
-  <rect x="100" y="776" width="42" height="28" rx="4" fill="#27ae60"/><text x="121" y="795" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">11</text>
-  <rect x="148" y="776" width="42" height="28" rx="4" fill="#27ae60"/><text x="169" y="795" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">12</text>
-  <rect x="196" y="776" width="42" height="28" rx="4" fill="#27ae60"/><text x="217" y="795" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">12</text>
-  <rect x="244" y="776" width="42" height="28" rx="4" fill="#27ae60"/><text x="265" y="795" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">14</text>
-  <rect x="292" y="776" width="42" height="28" rx="4" fill="#27ae60"/><text x="313" y="795" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">14</text>
-  <rect x="340" y="776" width="42" height="28" rx="4" fill="#27ae60"/><text x="361" y="795" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">17</text>
-  <text x="400" y="795" fill="#27ae60" font-size="12" font-weight="bold">&#x2190; sorted! Zero comparisons.</text>
+  <rect x="20" y="704" width="860" height="56" rx="8" fill="#fff" stroke="#27ae60" stroke-width="2"/>
+  <text x="35" y="728" fill="#27ae60" font-size="14" font-weight="bold">Result:</text>
+  <rect x="100" y="714" width="42" height="28" rx="4" fill="#27ae60"/><text x="121" y="733" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">11</text>
+  <rect x="148" y="714" width="42" height="28" rx="4" fill="#27ae60"/><text x="169" y="733" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">12</text>
+  <rect x="196" y="714" width="42" height="28" rx="4" fill="#27ae60"/><text x="217" y="733" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">12</text>
+  <rect x="244" y="714" width="42" height="28" rx="4" fill="#27ae60"/><text x="265" y="733" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">14</text>
+  <rect x="292" y="714" width="42" height="28" rx="4" fill="#27ae60"/><text x="313" y="733" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">14</text>
+  <rect x="340" y="714" width="42" height="28" rx="4" fill="#27ae60"/><text x="361" y="733" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">17</text>
+  <text x="400" y="733" fill="#27ae60" font-size="12" font-weight="bold">&#x2190; sorted! Zero comparisons.</text>
 
   <!-- ===== KEY TAKEAWAYS ===== -->
-  <rect x="20" y="838" width="860" height="190" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
-  <text x="450" y="864" text-anchor="middle" fill="#1a1a2e" font-size="16" font-weight="bold">Key Takeaways</text>
-  <text x="40" y="890" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Three passes over the data:</tspan> (1) find min/max O(n), (2) tally counts O(n), (3) place elements O(n+k). Total: O(n + k).</text>
-  <text x="40" y="914" fill="#333" font-size="12">&#x2022; No element-to-element comparisons &#x2014; just count and place. That&#x2019;s how it beats the O(n log n) lower bound.</text>
-  <text x="40" y="938" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">k depends on the range</tspan> (max - min + 1), not max itself. Here k = 7, not 17. Offset by min to save space.</text>
-  <text x="40" y="962" fill="#333" font-size="12">&#x2022; Space is O(k) for the count array. If k is huge (e.g., sorting 100 values with range = 1 billion), counting sort wastes memory.</text>
-  <text x="40" y="986" fill="#333" font-size="12">&#x2022; When k &#x226A; n (small range, many elements), this is essentially O(n) &#x2014; much faster than any comparison sort.</text>
-  <text x="40" y="1010" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Stable</tspan> &#x2014; equal elements maintain their relative order (important when used as a subroutine in radix sort).</text>
+  <rect x="20" y="776" width="860" height="160" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="450" y="800" text-anchor="middle" fill="#1a1a2e" font-size="16" font-weight="bold">Key Takeaways</text>
+  <text x="40" y="824" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Three passes over the data:</tspan> (1) find min/max O(n), (2) tally counts O(n), (3) place elements O(n+k). Total: O(n + k).</text>
+  <text x="40" y="846" fill="#333" font-size="12">&#x2022; No element-to-element comparisons &#x2014; just count and place. That&#x2019;s how it beats the O(n log n) lower bound.</text>
+  <text x="40" y="868" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">k depends on the range</tspan> (max - min + 1), not max itself. Here k = 7, not 17. Offset by min to save space.</text>
+  <text x="40" y="890" fill="#333" font-size="12">&#x2022; Space is O(k) for the count array. If k is huge (e.g., sorting 100 values with range = 1 billion), counting sort wastes memory.</text>
+  <text x="40" y="912" fill="#333" font-size="12">&#x2022; When k &#x226A; n (small range, many elements), this is essentially O(n) &#x2014; much faster than any comparison sort.</text>
 </svg>
