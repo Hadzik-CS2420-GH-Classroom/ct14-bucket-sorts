@@ -29,7 +29,7 @@
   <text x="220" y="143" text-anchor="middle" fill="#1b5e20" font-size="13" font-weight="bold">O(n + k)</text>
   <text x="340" y="143" text-anchor="middle" fill="#c62828" font-size="13" font-weight="bold">O(n&#xB2;)</text>
   <text x="450" y="143" text-anchor="middle" fill="#e65100" font-size="12">O(n + k)</text>
-  <text x="540" y="143" text-anchor="middle" fill="#27ae60" font-size="13" font-weight="bold">Yes*</text>
+  <text x="540" y="143" text-anchor="middle" fill="#e67e22" font-size="13" font-weight="bold">Depends*</text>
   <text x="700" y="143" text-anchor="middle" fill="#555" font-size="11">Uniform distribution</text>
 
   <line x1="20" y1="156" x2="880" y2="156" stroke="#e0e0e0" stroke-width="1"/>
@@ -46,7 +46,7 @@
   <line x1="20" y1="192" x2="880" y2="192" stroke="#e0e0e0" stroke-width="1"/>
 
   <!-- Notes -->
-  <text x="30" y="216" fill="#888" font-size="11">k = range of values (counting/bucket) or base (radix, typically 10) &nbsp;&nbsp;&nbsp; d = number of digits &nbsp;&nbsp;&nbsp; * = if per-bucket sort is stable</text>
+  <text x="30" y="216" fill="#888" font-size="11">k = range of values (counting/bucket) or base (radix, typically 10) &nbsp;&nbsp;&nbsp; d = number of digits &nbsp;&nbsp;&nbsp; * = bucket sort inherits stability from the per-bucket sort (stable if using insertion sort)</text>
 
   <!-- Bottom comparison callout -->
   <rect x="20" y="238" width="860" height="86" rx="10" fill="#f4f6f7" stroke="#bdc3c7" stroke-width="1.5"/>

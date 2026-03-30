@@ -140,6 +140,6 @@
   <text x="40" y="822" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Why insertion sort?</tspan> Buckets are small (2-3 elements each). Insertion sort is O(n&#xB2;) but on tiny arrays that is just a few operations.</text>
   <text x="40" y="846" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Bucket index formula:</tspan> (value - min) / range_per_bucket. Integer division gives the bucket number directly.</text>
   <text x="40" y="870" fill="#333" font-size="12">&#x2022; Works best when data is <tspan font-weight="bold">uniformly distributed</tspan> across a known range. Clustered data fills one bucket and degrades to O(n&#xB2;).</text>
-  <text x="40" y="894" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Stable</tspan> if the per-bucket sort is stable (insertion sort is stable).</text>
+  <text x="40" y="894" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Stability depends on the per-bucket sort.</tspan> Bucket sort itself just distributes and concatenates. Use insertion sort (stable) inside each bucket and bucket sort is stable. Use selection sort (unstable) and it becomes unstable.</text>
   <text x="40" y="918" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">vs counting sort:</tspan> counting sort needs k = value range (can be huge). Bucket sort only needs k = number of buckets (you choose).</text>
 </svg>
