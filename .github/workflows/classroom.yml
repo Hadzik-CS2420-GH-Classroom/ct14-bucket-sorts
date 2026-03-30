@@ -1,0 +1,172 @@
+name: Autograding Tests
+on:
+  - push
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build Project
+      continue-on-error: true
+      run: |
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+        cmake --build build --config Release
+
+    - name: Build Check
+      id: build
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Build Check
+        command: |
+          if [ -f build/run_tests ]; then
+            echo "Build successful"
+          else
+            echo "Build failed" && exit 1
+          fi
+        timeout: 10
+        max-score: 0
+
+    # ==================== Counting Sort Tests (10 points) ====================
+
+    - name: "Counting Sort: Basic"
+      id: counting-basic
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Counting Sort: Basic"
+        command: cd build && ./run_tests --gtest_filter=CountingSortTest.BasicSort
+        timeout: 10
+        max-score: 2
+
+    - name: "Counting Sort: Edge Cases"
+      id: counting-edge
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Counting Sort: Edge Cases"
+        command: cd build && ./run_tests --gtest_filter=CountingSortTest.SingleElement:CountingSortTest.EmptyVector
+        timeout: 10
+        max-score: 2
+
+    - name: "Counting Sort: Already Sorted"
+      id: counting-sorted
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Counting Sort: Already Sorted"
+        command: cd build && ./run_tests --gtest_filter=CountingSortTest.AlreadySorted
+        timeout: 10
+        max-score: 2
+
+    - name: "Counting Sort: Reverse & Duplicates"
+      id: counting-reverse
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Counting Sort: Reverse & Duplicates"
+        command: cd build && ./run_tests --gtest_filter=CountingSortTest.ReverseSorted:CountingSortTest.Duplicates
+        timeout: 10
+        max-score: 4
+
+    # ==================== Bucket Sort Tests (10 points) ====================
+
+    - name: "Bucket Sort: Basic"
+      id: bucket-basic
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Bucket Sort: Basic"
+        command: cd build && ./run_tests --gtest_filter=BucketSortTest.BasicSort
+        timeout: 10
+        max-score: 2
+
+    - name: "Bucket Sort: Edge Cases"
+      id: bucket-edge
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Bucket Sort: Edge Cases"
+        command: cd build && ./run_tests --gtest_filter=BucketSortTest.SingleElement:BucketSortTest.EmptyVector
+        timeout: 10
+        max-score: 2
+
+    - name: "Bucket Sort: Already Sorted"
+      id: bucket-sorted
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Bucket Sort: Already Sorted"
+        command: cd build && ./run_tests --gtest_filter=BucketSortTest.AlreadySorted
+        timeout: 10
+        max-score: 2
+
+    - name: "Bucket Sort: Duplicates"
+      id: bucket-dupes
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Bucket Sort: Duplicates"
+        command: cd build && ./run_tests --gtest_filter=BucketSortTest.Duplicates
+        timeout: 10
+        max-score: 4
+
+    # ==================== Radix Sort Tests (10 points) ====================
+
+    - name: "Radix Sort: Basic"
+      id: radix-basic
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Radix Sort: Basic"
+        command: cd build && ./run_tests --gtest_filter=RadixSortTest.BasicSort
+        timeout: 10
+        max-score: 2
+
+    - name: "Radix Sort: Edge Cases"
+      id: radix-edge
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Radix Sort: Edge Cases"
+        command: cd build && ./run_tests --gtest_filter=RadixSortTest.SingleElement:RadixSortTest.EmptyVector
+        timeout: 10
+        max-score: 2
+
+    - name: "Radix Sort: Already Sorted & Single Digits"
+      id: radix-sorted
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Radix Sort: Already Sorted & Single Digits"
+        command: cd build && ./run_tests --gtest_filter=RadixSortTest.AlreadySorted:RadixSortTest.SingleDigits
+        timeout: 10
+        max-score: 2
+
+    - name: "Radix Sort: Duplicates"
+      id: radix-dupes
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "Radix Sort: Duplicates"
+        command: cd build && ./run_tests --gtest_filter=RadixSortTest.Duplicates
+        timeout: 10
+        max-score: 4
+
+    # ==================== Grading Reporter ====================
+
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        BUILD_RESULTS: "${{steps.build.outputs.result}}"
+        COUNTING-BASIC_RESULTS: "${{steps.counting-basic.outputs.result}}"
+        COUNTING-EDGE_RESULTS: "${{steps.counting-edge.outputs.result}}"
+        COUNTING-SORTED_RESULTS: "${{steps.counting-sorted.outputs.result}}"
+        COUNTING-REVERSE_RESULTS: "${{steps.counting-reverse.outputs.result}}"
+        BUCKET-BASIC_RESULTS: "${{steps.bucket-basic.outputs.result}}"
+        BUCKET-EDGE_RESULTS: "${{steps.bucket-edge.outputs.result}}"
+        BUCKET-SORTED_RESULTS: "${{steps.bucket-sorted.outputs.result}}"
+        BUCKET-DUPES_RESULTS: "${{steps.bucket-dupes.outputs.result}}"
+        RADIX-BASIC_RESULTS: "${{steps.radix-basic.outputs.result}}"
+        RADIX-EDGE_RESULTS: "${{steps.radix-edge.outputs.result}}"
+        RADIX-SORTED_RESULTS: "${{steps.radix-sorted.outputs.result}}"
+        RADIX-DUPES_RESULTS: "${{steps.radix-dupes.outputs.result}}"
+      with:
+        runners: build,counting-basic,counting-edge,counting-sorted,counting-reverse,bucket-basic,bucket-edge,bucket-sorted,bucket-dupes,radix-basic,radix-edge,radix-sorted,radix-dupes
