@@ -46,21 +46,11 @@ void bucket_sort(std::vector<int>& data, int num_buckets) {
     if (data.size() <= 1) return;
 
     // Step 1a: Find min and max, compute range per bucket
-    //
-    // num_buckets is chosen by the programmer -- it's a parameter, not computed.
-    // More buckets = better distribution (fewer elements per bucket) but more memory.
-    // Fewer buckets = less memory but larger buckets to sort.
-    // Common choices: n (one per element), sqrt(n), or a fixed number like 10.
-    // Default here is 10 (from the function signature).
-    //
     int min_val = *std::min_element(data.begin(), data.end());
     int max_val = *std::max_element(data.begin(), data.end());
 
-    if (min_val == max_val) return;  // all elements are the same, range=0 would cause /0
+    if (min_val == max_val) return;
 
-    // range_per_bucket = how wide each bucket's value range is
-    // e.g. min=5, max=91, 3 buckets: range_per_bucket = ceil(87/3) = 29
-    //      bucket 0: [5-33], bucket 1: [34-62], bucket 2: [63-91]
     int range = max_val - min_val + 1;
     int range_per_bucket = static_cast<int>(std::ceil(
         static_cast<double>(range) / num_buckets));
@@ -74,18 +64,7 @@ void bucket_sort(std::vector<int>& data, int num_buckets) {
         buckets[bucket_idx].push_back(val);
     }
 
-    // Step 2: Sort each bucket -- O(n^2/k) total across all buckets
-    //
-    // std::sort is C++'s built-in sort from <algorithm>. It uses introsort:
-    //   - Quick sort as the primary algorithm (fast in practice)
-    //   - Heap sort fallback if recursion gets too deep (prevents O(n^2))
-    //   - Insertion sort for tiny subarrays (n <= ~16)
-    // It's O(n log n) guaranteed, but NOT stable.
-    // For stable bucket sort, use std::stable_sort (merge sort internally).
-    //
-    // Since our buckets are small (2-3 elements), std::sort will use its
-    // insertion sort path internally -- so it's fast and simple here.
-    //
+    // Step 2: Sort each bucket, then concatenate
     int idx = 0;
     for (auto& bucket : buckets) {
         std::sort(bucket.begin(), bucket.end());
