@@ -1,0 +1,289 @@
+<!-- Canvas LMS HTML Fragment -- paste into the Rich Content Editor (HTML view) -->
+
+<h2>&#x1F468;&#x200D;&#x1F4BB; Code-Together 14: Non-Comparison Sorts</h2>
+
+<h3>&#x1F3AF; Overview</h3>
+<p>An in-class code-together activity introducing <strong>non-comparison sorting algorithms</strong> &mdash; counting sort, bucket sort, and radix sort. Unlike CT12 and CT13&rsquo;s comparison-based sorts, these algorithms never compare two elements directly. Instead, they exploit <strong>integer key properties</strong> (value range, digit structure) to achieve <strong>O(n + k)</strong> time &mdash; faster than the O(n log n) lower bound for comparison sorts. Students implement all three sorts in <code>NonComparisonSorts.cpp</code> using the patterns walked through in class.</p>
+
+<h3>&#x1F4D6; Learning Objectives</h3>
+<p>By completing this activity, you will be able to:</p>
+<ul>
+    <li>Implement <strong>counting sort</strong>: find min/max, allocate a count array of size k, tally occurrences, place elements directly</li>
+    <li>Implement <strong>bucket sort</strong>: distribute elements into range-based buckets, sort each bucket, concatenate</li>
+    <li>Implement <strong>radix sort (LSD)</strong>: sort digit-by-digit from least significant to most, using stable counting sort at each pass</li>
+    <li>Explain what <strong>k</strong> means for each algorithm and why it determines whether non-comparison sorts are practical</li>
+    <li>Explain why <strong>stability</strong> is critical in radix sort &mdash; unstable sub-sorts would scramble earlier digit orderings</li>
+    <li>Know <strong>when to use</strong> non-comparison sorts vs comparison sorts (integers with known range vs general data)</li>
+</ul>
+
+<h3>&#x1F680; Getting Started</h3>
+
+<h4>Step 1: Accept the Assignment</h4>
+<p>Click the button below to create your personal repository:</p>
+<p><a style="display: inline-block; padding: 10px 24px; font-size: 1em; font-weight: 600; color: #fff; background-color: #0b874b; border-radius: 4px; text-decoration: none;" href="https://classroom.github.com/a/9kgmY5NK" target="_blank" rel="noopener">Accept Assignment on GitHub</a></p>
+
+<div style="padding: 14px 18px; border-radius: 4px; margin-bottom: 16px; background-color: #fcf8e3; border: 1px solid #faebcc; color: #8a6d3b;">
+    <strong>Repository Access Issue?</strong><br />
+    If you don&#x2019;t see the repository after accepting, check your email for the GitHub invite.
+</div>
+
+<h4>Step 2: Clone in Visual Studio</h4>
+<ol>
+    <li>Open <strong>Visual Studio</strong></li>
+    <li>On the start window, click <strong>&#x201C;Clone a repository&#x201D;</strong></li>
+    <li>Paste your repository URL (from GitHub) into the <strong>Repository location</strong> field</li>
+    <li>Choose a local path and click <strong>Clone</strong></li>
+    <li>Visual Studio should automatically detect the CMake project and configure it</li>
+</ol>
+
+<div style="padding: 14px 18px; border-radius: 4px; margin-bottom: 16px; background-color: #d9edf7; border: 1px solid #bce8f1; color: #31708f;">
+    Follow the <strong>Troubleshooting</strong> section at the bottom if CMake does not configure automatically.
+</div>
+
+<h4>Step 3: Wait for CMake Configuration</h4>
+<p>Visual Studio will automatically run CMake. Watch the <strong>Output</strong> window (<em>View &rarr; Output</em>, select <em>&#x201C;Show output from: CMake&#x201D;</em>) until you see:</p>
+<pre style="background-color: #1e1e1e; color: #d4d4d4; padding: 16px 20px; border-radius: 4px; overflow-x: auto; font-family: 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace; font-size: 0.875em; line-height: 1.6;">CMake generation finished.</pre>
+
+<h3>&#x1F4DD; What You&#x2019;ll Do</h3>
+<p>Open <code>NonComparisonSorts.cpp</code> and complete the <code>TODO</code> comments. Each TODO tells you what to write, and the <strong>SEE DIAGRAM</strong> comments point you to visual walkthroughs in the <code>images/</code> folder. We&#x2019;ll work through these together in class.</p>
+
+<h3>&#x1F4DA; Teaching Order</h3>
+<p>Work through the files in order:</p>
+
+<h4>1. <code>NonComparisonSorts.h</code> &mdash; Function declarations</h4>
+<p>Walk through the header. Compare to CT12/CT13: same interface (<code>vector&lt;int&gt;&amp;</code>), but these sorts never use <code>&lt;</code> or <code>&gt;</code> to compare elements.</p>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">Section</th>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">What You&#x2019;ll Learn</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>counting_sort()</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">O(n+k) time, O(k) space, stable. Count occurrences, place directly. k = value range.</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>bucket_sort()</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">O(n+k) avg, O(n&sup2;) worst, O(n+k) space. Distribute into buckets by range, sort each, concatenate.</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>radix_sort()</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">O(d(n+k)) time, O(n+k) space, stable. Sort digit-by-digit using stable counting sort.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>2. <code>NonComparisonSorts.cpp</code> &mdash; Sort implementations (3 TODOs)</h4>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">Section</th>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">What You&#x2019;ll Learn</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">TODO 1: <code>counting_sort()</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Step 1a: find min/max. Step 1b: allocate count array of size k. Step 1c: tally with <code>count[val - min]++</code>. Step 2: walk counts left-to-right, place values.</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">TODO 2: <code>bucket_sort()</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Step 1a: find range, compute <code>range_per_bucket</code>. Edge guards (size &le; 1, min == max). Step 1b: distribute with <code>(val - min) / range_per_bucket</code>. Step 2: sort each bucket. Step 3: concatenate.</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">TODO 3: <code>radix_sort()</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Step 0: find max to determine d (number of digits). Main loop: for each digit position, call <code>counting_sort_by_digit</code>. Helper uses backwards iteration for stability.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>3. <code>main.cpp</code> &mdash; Demo (provided)</h4>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">Section</th>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">What You&#x2019;ll Learn</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Counting sort demo</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Sort [4, 2, 7, 1, 9, 3, 5, 8, 2, 6] &mdash; small range, perfect for counting sort</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Bucket sort demo</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Sort [42, 15, 73, 28, 91, 5, 64, 37, 50, 19] &mdash; uniformly distributed, 10 default buckets</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Radix sort demo</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Sort [170, 45, 75, 90, 802, 24, 2, 66] &mdash; multi-digit values, 3 passes</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>&#x1F5BC;&#xFE0F; Diagrams</h3>
+<p>Diagrams are included in the <code>images/</code> folder and referenced in the source code comments. These help visualize what&#x2019;s happening:</p>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">Diagram</th>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">Shows</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>bucket_sorts_overview</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">The three non-comparison sorts at a high level</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>what_is_k</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">What k means, good vs bad use cases, when non-comparison sorts are practical</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>counting_sort_complete</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Full walkthrough on [14, 12, 17, 11, 14, 12] with step-by-step tally table</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>bucket_sort_complete</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Full walkthrough distributing [42, 15, 73, 28, 91, 5] into 3 buckets</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>radix_sort_complete</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Full walkthrough sorting [170, 45, 75, 90, 802, 24, 2, 66] digit-by-digit</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>bucket_sorts_comparison</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Side-by-side: time, space, stability, what k means for each sort</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>when_to_use_noncomparison</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Integers only: good examples (scores, ages, IDs) vs bad (strings, floats, objects)</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>all_nine_sorts_guide</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">All 9 sorts from CT12-CT14 with best use cases and decision guide</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>&#x1F4CA; Grading (30 points)</h3>
+<p>Your code is auto-graded by GitHub Classroom when you push. Tests check that each TODO produces the correct output.</p>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; background-color: #f5f5f5; font-weight: 700;">Category</th>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; background-color: #f5f5f5; font-weight: 700;">Points</th>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; background-color: #f5f5f5; font-weight: 700;">What is tested</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Build</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">0</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Project compiles without errors</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td colspan="3" style="border: 1px solid #c7cdd1; padding: 10px 14px; font-weight: 700; background-color: #f0f0f0;">Counting Sort (10 pts)</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Basic Sort</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">2</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Sorts a basic unsorted array correctly</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Edge Cases</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">2</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Empty and single-element arrays</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Already Sorted</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">2</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Already-sorted input stays sorted</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Reverse &amp; Duplicates</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">4</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Reverse-sorted input, arrays with duplicate values</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="border: 1px solid #c7cdd1; padding: 10px 14px; font-weight: 700; background-color: #f0f0f0;">Bucket Sort (10 pts)</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Basic Sort</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">2</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Sorts a basic unsorted array correctly</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Edge Cases</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">2</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Empty and single-element arrays</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Already Sorted</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">2</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Already-sorted input stays sorted</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Duplicates</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">4</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Arrays with duplicate values distributed across buckets</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td colspan="3" style="border: 1px solid #c7cdd1; padding: 10px 14px; font-weight: 700; background-color: #f0f0f0;">Radix Sort (10 pts)</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Basic Sort</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">2</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Sorts multi-digit values correctly</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Edge Cases</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">2</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Empty and single-element arrays</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Sorted &amp; Single Digits</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">2</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Already-sorted input, single-digit values (d=1)</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Duplicates</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">4</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Arrays with duplicate multi-digit values</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px; font-weight: 700; background-color: #f5f5f5;"><strong>Total</strong></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px; font-weight: 700; background-color: #f5f5f5;"><strong>30</strong></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px; background-color: #f5f5f5;"></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>&#x1F527; Troubleshooting</h3>
+
+<h4>CMake does not configure automatically</h4>
+<ol>
+    <li>Make sure you have <strong>Desktop development with C++</strong> workload installed in Visual Studio</li>
+    <li>Go to <em>Project &rarr; CMake Settings</em> and ensure the configuration is correct</li>
+    <li>Try <em>Project &rarr; Delete Cache and Reconfigure</em></li>
+    <li>Verify that <code>CMakeLists.txt</code> is in the root of your cloned repository</li>
+</ol>
+
+<h4>Tests fail to build</h4>
+<ul>
+    <li>Google Test is fetched automatically via CMake&#x2019;s <code>FetchContent</code> &mdash; make sure you have an internet connection during the first build</li>
+    <li>Do <strong>not</strong> modify header files in the <code>include/</code> folder</li>
+</ul>
+
+<h4>Running the Program</h4>
+<ol>
+    <li>In Visual Studio, select <code>ct14-non-comparison-sorts.exe</code> as the startup item from the dropdown</li>
+    <li>Press <strong>Ctrl+F5</strong> to run without debugging</li>
+    <li>You should see output from each section as you complete the TODOs</li>
+</ol>
+
+<div style="padding: 14px 18px; border-radius: 4px; margin-bottom: 16px; background-color: #dff0d8; border: 1px solid #d6e9c6; color: #3c763d;">
+    <strong>Tip:</strong> Look for the <code>// ? SEE DIAGRAM:</code> comments in each file &mdash; these point you to visual walkthroughs in the <code>images/</code> folder that show exactly what each step does.
+</div>
