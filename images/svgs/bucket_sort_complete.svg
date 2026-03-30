@@ -134,7 +134,7 @@
   <!-- ===== KEY TAKEAWAYS ===== -->
   <rect x="20" y="698" width="860" height="244" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
   <text x="450" y="724" text-anchor="middle" fill="#1a1a2e" font-size="16" font-weight="bold">Key Takeaways</text>
-  <text x="40" y="750" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Three steps:</tspan> (1a) find range + choose buckets O(n), (1b) distribute O(n), (2) sort each bucket, (3) concatenate O(n).</text>
+  <text x="40" y="750" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Three steps:</tspan> (1a) find range + choose buckets O(n), (1b) distribute O(n), (2) sort each bucket O(n&#xB2;/k), (3) concatenate O(n).</text>
   <text x="40" y="774" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Total: O(n + k)</tspan> average when data distributes evenly. k = number of buckets.</text>
   <text x="40" y="798" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold" fill="#e74c3c">Worst case O(n&#xB2;):</tspan> if all elements land in one bucket, you end up running insertion sort on the whole array.</text>
   <text x="40" y="822" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Why insertion sort?</tspan> Buckets are small (2-3 elements each). Insertion sort is O(n&#xB2;) but on tiny arrays that is just a few operations.</text>
