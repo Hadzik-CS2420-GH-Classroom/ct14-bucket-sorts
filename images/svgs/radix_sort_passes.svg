@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" font-family="'Segoe UI', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 590" font-family="'Segoe UI', Arial, sans-serif">
   <rect width="100%" height="100%" fill="white"/>
 
   <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Radix Sort &#x2014; Passes 2-3 (Stability in Action)</text>
   <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">Each pass sorts by the next digit. Stability preserves the ordering from previous passes.</text>
 
   <!-- Code block (left) -->
-  <rect x="20" y="64" width="380" height="260" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
+  <rect x="20" y="64" width="380" height="286" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
 
   <text x="35" y="84" fill="#6c7086" font-size="11" font-style="italic">// Main loop runs d times (once per digit)</text>
   <rect x="20" y="90" width="380" height="36" fill="#a6e3a118"/>
@@ -81,11 +81,12 @@
   <text x="40" y="444" fill="#333" font-size="12">&#x2022; The <tspan font-weight="bold">backwards iteration</tspan> in counting_sort_by_digit is what provides stability. Forward iteration would reverse equal elements.</text>
 
   <!-- Why unstable would break it -->
-  <rect x="20" y="474" width="860" height="44" rx="10" fill="#fce4ec" stroke="#c62828" stroke-width="1.5"/>
-  <text x="40" y="496" fill="#c62828" font-size="12" font-weight="bold">What if the sub-sort were unstable?</text>
-  <text x="40" y="512" fill="#555" font-size="11">Pass 2 would scramble the ones-digit ordering from Pass 1. After 3 passes, the array would NOT be sorted. This is why radix uses counting sort (stable), not selection sort or quick sort.</text>
+  <rect x="20" y="474" width="860" height="56" rx="10" fill="#fce4ec" stroke="#c62828" stroke-width="1.5"/>
+  <text x="40" y="494" fill="#c62828" font-size="12" font-weight="bold">What if the sub-sort were unstable?</text>
+  <text x="40" y="510" fill="#555" font-size="11">Pass 2 would scramble the ones-digit ordering from Pass 1. After 3 passes, the array would NOT be sorted.</text>
+  <text x="40" y="524" fill="#555" font-size="11">This is why radix uses counting sort (stable), not selection sort or quick sort (unstable).</text>
 
   <!-- Footer note -->
-  <rect x="20" y="530" width="860" height="36" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
-  <text x="450" y="554" text-anchor="middle" fill="#333" font-size="12">After d passes (one per digit), every digit position has been sorted. The array is fully sorted.</text>
+  <rect x="20" y="542" width="860" height="36" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="450" y="566" text-anchor="middle" fill="#333" font-size="12">After d passes (one per digit), every digit position has been sorted. The array is fully sorted.</text>
 </svg>
