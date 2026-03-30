@@ -1,31 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" font-family="'Segoe UI', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 530" font-family="'Segoe UI', Arial, sans-serif">
   <rect width="100%" height="100%" fill="white"/>
 
   <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Radix Sort &#x2014; Step 0 + Pass 1 Detail</text>
   <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">NonComparisonSorts.cpp::radix_sort() &#x2014; determine d and k, then first pass on ones digit</text>
 
+  <!-- Variable key (left, above code) -->
+  <rect x="20" y="64" width="390" height="82" rx="8" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+  <text x="35" y="82" fill="#333" font-size="11" font-weight="bold">Variable Key</text>
+  <rect x="35" y="88" width="10" height="10" rx="2" fill="#0d47a1"/>
+  <text x="50" y="98" fill="#555" font-size="10"><tspan font-weight="bold">n</tspan> = number of elements (8)</text>
+  <rect x="210" y="88" width="10" height="10" rx="2" fill="#c62828"/>
+  <text x="225" y="98" fill="#555" font-size="10"><tspan font-weight="bold">max_val</tspan> = largest value (802)</text>
+  <rect x="35" y="104" width="10" height="10" rx="2" fill="#e65100"/>
+  <text x="50" y="114" fill="#555" font-size="10"><tspan font-weight="bold">d</tspan> = digits in max (3 passes)</text>
+  <rect x="210" y="104" width="10" height="10" rx="2" fill="#6a1b9a"/>
+  <text x="225" y="114" fill="#555" font-size="10"><tspan font-weight="bold">k</tspan> = base = 10 (digits 0-9, always 10)</text>
+  <rect x="35" y="120" width="10" height="10" rx="2" fill="#2e7d32"/>
+  <text x="50" y="130" fill="#555" font-size="10"><tspan font-weight="bold">exp</tspan> = digit position (1, 10, 100...)</text>
+  <rect x="210" y="120" width="10" height="10" rx="2" fill="#f39c12"/>
+  <text x="225" y="130" fill="#555" font-size="10"><tspan font-weight="bold">digit</tspan> = (value / exp) % 10</text>
+
   <!-- Code block (left) -->
-  <rect x="20" y="64" width="380" height="280" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
+  <rect x="20" y="154" width="390" height="250" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
 
-  <rect x="20" y="72" width="380" height="42" fill="#89b4fa18"/>
-  <text x="35" y="88" fill="#89b4fa" font-size="11" font-weight="bold">Step 0: Find max, determine d O(n)</text>
-  <text x="35" y="106" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> max_val = *max_element(...);</text>
+  <rect x="20" y="160" width="390" height="36" fill="#89b4fa18"/>
+  <text x="35" y="178" fill="#89b4fa" font-size="11" font-weight="bold">Step 0: Find max, determine d O(n)</text>
+  <text x="35" y="194" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> max_val = *max_element(...);</text>
 
-  <rect x="20" y="118" width="380" height="42" fill="#a6e3a118"/>
-  <text x="35" y="134" fill="#a6e3a1" font-size="11" font-weight="bold">Main loop: one pass per digit</text>
-  <text x="35" y="152" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (exp = <tspan fill="#fab387">1</tspan>; max_val/exp &gt; <tspan fill="#fab387">0</tspan>; exp *= <tspan fill="#fab387">10</tspan>)</text>
+  <rect x="20" y="208" width="390" height="42" fill="#a6e3a118"/>
+  <text x="35" y="224" fill="#a6e3a1" font-size="11" font-weight="bold">Main loop: one pass per digit</text>
+  <text x="35" y="242" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (exp = <tspan fill="#fab387">1</tspan>; max_val/exp &gt; <tspan fill="#fab387">0</tspan>; exp *= <tspan fill="#fab387">10</tspan>)</text>
 
-  <rect x="20" y="166" width="380" height="140" fill="#f38ba818"/>
-  <text x="35" y="182" fill="#f38ba8" font-size="11" font-weight="bold">counting_sort_by_digit(data, exp):</text>
-  <text x="35" y="200" fill="#6c7086" font-size="11" font-style="italic">// Extract digit at current position</text>
-  <text x="35" y="216" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> digit = (data[i] / exp) % <tspan fill="#fab387">10</tspan>;</text>
-  <text x="35" y="236" fill="#6c7086" font-size="11" font-style="italic">// Count digits, build cumulative, place backwards</text>
-  <text x="35" y="254" fill="#cdd6f4" font-size="11">count[digit]++;           <tspan fill="#6c7086">// tally</tspan></text>
-  <text x="35" y="272" fill="#cdd6f4" font-size="11">count[i] += count[i-<tspan fill="#fab387">1</tspan>];  <tspan fill="#6c7086">// cumulative</tspan></text>
-  <text x="35" y="290" fill="#cdd6f4" font-size="11">output[count[digit]-<tspan fill="#fab387">1</tspan>] = data[i]; <tspan fill="#6c7086">// place</tspan></text>
-  <text x="35" y="306" fill="#cdd6f4" font-size="11">count[digit]--;           <tspan fill="#6c7086">// next slot</tspan></text>
+  <rect x="20" y="256" width="390" height="140" fill="#f38ba818"/>
+  <text x="35" y="272" fill="#f38ba8" font-size="11" font-weight="bold">counting_sort_by_digit(data, exp):</text>
+  <text x="35" y="290" fill="#6c7086" font-size="11" font-style="italic">// Extract digit at current position</text>
+  <text x="35" y="306" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> digit = (data[i] / exp) % <tspan fill="#fab387">10</tspan>;</text>
+  <text x="35" y="326" fill="#6c7086" font-size="11" font-style="italic">// Count digits, build cumulative, place backwards</text>
+  <text x="35" y="344" fill="#cdd6f4" font-size="11">count[digit]++;           <tspan fill="#6c7086">// tally</tspan></text>
+  <text x="35" y="362" fill="#cdd6f4" font-size="11">count[i] += count[i-<tspan fill="#fab387">1</tspan>];  <tspan fill="#6c7086">// cumulative</tspan></text>
+  <text x="35" y="380" fill="#cdd6f4" font-size="11">output[count[digit]-<tspan fill="#fab387">1</tspan>] = data[i]; <tspan fill="#6c7086">// place</tspan></text>
+  <text x="35" y="396" fill="#cdd6f4" font-size="11">count[digit]--;           <tspan fill="#6c7086">// next slot</tspan></text>
 
-  <text x="35" y="332" fill="#6c7086" font-size="11" font-style="italic">// k = 10 (digits 0-9). Always 10 slots.</text>
+  <text x="35" y="422" fill="#6c7086" font-size="11" font-style="italic">// k = 10 (digits 0-9). Always 10 slots.</text>
 
   <!-- Right panel -->
   <text x="420" y="82" fill="#6a1b9a" font-size="13" font-weight="bold">Input: [170, 45, 75, 90, 802, 24, 2, 66]</text>
