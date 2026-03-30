@@ -7,7 +7,8 @@
 // Counting Sort
 // ---------------------------------------------------------------------------
 //
-// ? SEE DIAGRAM: cpp_diagrams.md #1 -- counting sort code walkthrough
+// ? SEE DIAGRAM: cpp_diagrams.md #1 -- Steps 1a, 1b, 1c (Count Phase)
+// ? SEE DIAGRAM: cpp_diagrams.md #2 -- Step 2 (Placement Phase)
 //
 void counting_sort(std::vector<int>& data) {
     if (data.size() <= 1) return;
@@ -38,7 +39,8 @@ void counting_sort(std::vector<int>& data) {
 // Bucket Sort
 // ---------------------------------------------------------------------------
 //
-// ? SEE DIAGRAM: cpp_diagrams.md #2 -- bucket sort code walkthrough
+// ? SEE DIAGRAM: cpp_diagrams.md #3 -- Steps 1a, 1b (Distribution Phase)
+// ? SEE DIAGRAM: cpp_diagrams.md #4 -- Steps 2-3 (Sort + Concatenate)
 //
 void bucket_sort(std::vector<int>& data, int num_buckets) {
     if (data.size() <= 1) return;
@@ -79,7 +81,8 @@ void bucket_sort(std::vector<int>& data, int num_buckets) {
 // Radix Sort (LSD)
 // ---------------------------------------------------------------------------
 //
-// ? SEE DIAGRAM: cpp_diagrams.md #3 -- radix sort code walkthrough
+// ? SEE DIAGRAM: cpp_diagrams.md #5 -- Step 0 + Pass 1 Detail
+// ? SEE DIAGRAM: cpp_diagrams.md #6 -- Passes 2-3 (Stability in Action)
 //
 // Helper: counting sort by a specific digit position
 static void counting_sort_by_digit(std::vector<int>& data, int exp) {
