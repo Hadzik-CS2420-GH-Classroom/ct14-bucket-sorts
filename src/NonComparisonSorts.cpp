@@ -64,8 +64,18 @@ void bucket_sort(std::vector<int>& data, int num_buckets) {
         buckets[bucket_idx].push_back(val);
     }
 
-    // Step 2: Sort each bucket -- O(n^2/k) total with insertion sort
-    // Using std::sort here (which uses introsort internally)
+    // Step 2: Sort each bucket -- O(n^2/k) total across all buckets
+    //
+    // std::sort is C++'s built-in sort from <algorithm>. It uses introsort:
+    //   - Quick sort as the primary algorithm (fast in practice)
+    //   - Heap sort fallback if recursion gets too deep (prevents O(n^2))
+    //   - Insertion sort for tiny subarrays (n <= ~16)
+    // It's O(n log n) guaranteed, but NOT stable.
+    // For stable bucket sort, use std::stable_sort (merge sort internally).
+    //
+    // Since our buckets are small (2-3 elements), std::sort will use its
+    // insertion sort path internally -- so it's fast and simple here.
+    //
     int idx = 0;
     for (auto& bucket : buckets) {
         std::sort(bucket.begin(), bucket.end());
