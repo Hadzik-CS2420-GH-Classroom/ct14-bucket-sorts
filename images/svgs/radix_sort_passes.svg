@@ -1,67 +1,91 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="'Segoe UI', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" font-family="'Segoe UI', Arial, sans-serif">
   <rect width="100%" height="100%" fill="white"/>
 
   <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Radix Sort &#x2014; Passes 2-3 (Stability in Action)</text>
   <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">Each pass sorts by the next digit. Stability preserves the ordering from previous passes.</text>
 
-  <!-- Input from Pass 1 -->
-  <text x="30" y="76" fill="#888" font-size="11">After Pass 1 (ones sorted):</text>
-  <rect x="230" y="62" width="38" height="20" rx="3" fill="#9b59b6"/><text x="249" y="77" text-anchor="middle" fill="#fff" font-size="10">170</text>
-  <rect x="272" y="62" width="32" height="20" rx="3" fill="#9b59b6"/><text x="288" y="77" text-anchor="middle" fill="#fff" font-size="10">90</text>
-  <rect x="308" y="62" width="38" height="20" rx="3" fill="#9b59b6"/><text x="327" y="77" text-anchor="middle" fill="#fff" font-size="10">802</text>
-  <rect x="350" y="62" width="26" height="20" rx="3" fill="#9b59b6"/><text x="363" y="77" text-anchor="middle" fill="#fff" font-size="10">2</text>
-  <rect x="380" y="62" width="32" height="20" rx="3" fill="#9b59b6"/><text x="396" y="77" text-anchor="middle" fill="#fff" font-size="10">24</text>
-  <rect x="416" y="62" width="32" height="20" rx="3" fill="#9b59b6"/><text x="432" y="77" text-anchor="middle" fill="#fff" font-size="10">45</text>
-  <rect x="452" y="62" width="32" height="20" rx="3" fill="#9b59b6"/><text x="468" y="77" text-anchor="middle" fill="#fff" font-size="10">75</text>
-  <rect x="488" y="62" width="32" height="20" rx="3" fill="#9b59b6"/><text x="504" y="77" text-anchor="middle" fill="#fff" font-size="10">66</text>
+  <!-- Code block (left) -->
+  <rect x="20" y="64" width="380" height="260" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
+
+  <text x="35" y="84" fill="#6c7086" font-size="11" font-style="italic">// Main loop runs d times (once per digit)</text>
+  <rect x="20" y="90" width="380" height="36" fill="#a6e3a118"/>
+  <text x="35" y="108" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (exp = <tspan fill="#fab387">1</tspan>; max_val/exp &gt; <tspan fill="#fab387">0</tspan>; exp *= <tspan fill="#fab387">10</tspan>)</text>
+  <text x="50" y="124" fill="#cdd6f4" font-size="11">counting_sort_by_digit(data, exp);</text>
+
+  <text x="35" y="148" fill="#6c7086" font-size="11" font-style="italic">// exp=1: ones | exp=10: tens | exp=100: hundreds</text>
+
+  <rect x="20" y="160" width="380" height="120" fill="#f38ba818"/>
+  <text x="35" y="178" fill="#f38ba8" font-size="11" font-weight="bold">Why stability matters (inside helper):</text>
+  <text x="35" y="198" fill="#6c7086" font-size="11" font-style="italic">// Build output backwards to preserve order</text>
+  <text x="35" y="216" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (i = n-<tspan fill="#fab387">1</tspan>; i &gt;= <tspan fill="#fab387">0</tspan>; --i) {</text>
+  <text x="50" y="234" fill="#cdd6f4" font-size="11">digit = (data[i] / exp) % <tspan fill="#fab387">10</tspan>;</text>
+  <text x="50" y="252" fill="#cdd6f4" font-size="11">output[count[digit]-<tspan fill="#fab387">1</tspan>] = data[i];</text>
+  <text x="50" y="270" fill="#cdd6f4" font-size="11">count[digit]--;</text>
+  <text x="35" y="286" fill="#cdd6f4" font-size="11">}</text>
+
+  <text x="35" y="310" fill="#6c7086" font-size="11" font-style="italic">// Iterating backwards is what makes it stable.</text>
+  <text x="35" y="324" fill="#6c7086" font-size="11" font-style="italic">// If we went forwards, equal-digit elements</text>
+  <text x="35" y="338" fill="#6c7086" font-size="11" font-style="italic">// would reverse their previous-pass order.</text>
+
+  <!-- Right panel -->
+  <text x="420" y="76" fill="#888" font-size="11">After Pass 1 (ones sorted): [170, 90, 802, 2, 24, 45, 75, 66]</text>
 
   <!-- Pass 2: Tens -->
-  <rect x="20" y="94" width="860" height="140" rx="8" fill="#fff" stroke="#8e44ad" stroke-width="1.5"/>
-  <text x="35" y="116" fill="#8e44ad" font-size="14" font-weight="bold">Pass 2 (exp=10): Sort by tens digit</text>
-  <text x="310" y="116" fill="#888" font-size="11">digit = (value / 10) % 10</text>
+  <rect x="420" y="88" width="460" height="142" rx="6" fill="#ede7f6" stroke="#8e44ad" stroke-width="1"/>
+  <text x="430" y="108" fill="#8e44ad" font-size="12" font-weight="bold">Pass 2 (exp=10): digit = (value / 10) % 10</text>
 
-  <!-- Digit extraction -->
-  <text x="40" y="140" fill="#555" font-size="11">1<tspan fill="#e74c3c" font-weight="bold">7</tspan>0&#x2192;7  <tspan fill="#e74c3c" font-weight="bold">9</tspan>0&#x2192;9  8<tspan fill="#e74c3c" font-weight="bold">0</tspan>2&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">0</tspan>2&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">2</tspan>4&#x2192;2  <tspan fill="#e74c3c" font-weight="bold">4</tspan>5&#x2192;4  <tspan fill="#e74c3c" font-weight="bold">7</tspan>5&#x2192;7  <tspan fill="#e74c3c" font-weight="bold">6</tspan>6&#x2192;6</text>
+  <text x="430" y="128" fill="#555" font-size="10">1<tspan fill="#e74c3c" font-weight="bold">7</tspan>0&#x2192;7  <tspan fill="#e74c3c" font-weight="bold">9</tspan>0&#x2192;9  8<tspan fill="#e74c3c" font-weight="bold">0</tspan>2&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">0</tspan>2&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">2</tspan>4&#x2192;2  <tspan fill="#e74c3c" font-weight="bold">4</tspan>5&#x2192;4  <tspan fill="#e74c3c" font-weight="bold">7</tspan>5&#x2192;7  <tspan fill="#e74c3c" font-weight="bold">6</tspan>6&#x2192;6</text>
 
-  <text x="40" y="164" fill="#555" font-size="11" font-weight="bold">After stable sort by tens:</text>
-  <rect x="280" y="152" width="38" height="20" rx="3" fill="#8e44ad"/><text x="299" y="167" text-anchor="middle" fill="#fff" font-size="10">802</text>
-  <rect x="322" y="152" width="26" height="20" rx="3" fill="#8e44ad"/><text x="335" y="167" text-anchor="middle" fill="#fff" font-size="10">2</text>
-  <rect x="352" y="152" width="32" height="20" rx="3" fill="#8e44ad"/><text x="368" y="167" text-anchor="middle" fill="#fff" font-size="10">24</text>
-  <rect x="388" y="152" width="32" height="20" rx="3" fill="#8e44ad"/><text x="404" y="167" text-anchor="middle" fill="#fff" font-size="10">45</text>
-  <rect x="424" y="152" width="32" height="20" rx="3" fill="#8e44ad"/><text x="440" y="167" text-anchor="middle" fill="#fff" font-size="10">66</text>
-  <rect x="460" y="152" width="38" height="20" rx="3" fill="#8e44ad"/><text x="479" y="167" text-anchor="middle" fill="#fff" font-size="10">170</text>
-  <rect x="502" y="152" width="32" height="20" rx="3" fill="#8e44ad"/><text x="518" y="167" text-anchor="middle" fill="#fff" font-size="10">75</text>
-  <rect x="538" y="152" width="32" height="20" rx="3" fill="#8e44ad"/><text x="554" y="167" text-anchor="middle" fill="#fff" font-size="10">90</text>
+  <text x="430" y="148" fill="#555" font-size="10" font-weight="bold">Result:</text>
+  <rect x="490" y="138" width="34" height="16" rx="3" fill="#8e44ad"/><text x="507" y="150" text-anchor="middle" fill="#fff" font-size="9">802</text>
+  <rect x="528" y="138" width="22" height="16" rx="3" fill="#8e44ad"/><text x="539" y="150" text-anchor="middle" fill="#fff" font-size="9">2</text>
+  <rect x="554" y="138" width="28" height="16" rx="3" fill="#8e44ad"/><text x="568" y="150" text-anchor="middle" fill="#fff" font-size="9">24</text>
+  <rect x="586" y="138" width="28" height="16" rx="3" fill="#8e44ad"/><text x="600" y="150" text-anchor="middle" fill="#fff" font-size="9">45</text>
+  <rect x="618" y="138" width="28" height="16" rx="3" fill="#8e44ad"/><text x="632" y="150" text-anchor="middle" fill="#fff" font-size="9">66</text>
+  <rect x="650" y="138" width="34" height="16" rx="3" fill="#8e44ad"/><text x="667" y="150" text-anchor="middle" fill="#fff" font-size="9">170</text>
+  <rect x="688" y="138" width="28" height="16" rx="3" fill="#8e44ad"/><text x="702" y="150" text-anchor="middle" fill="#fff" font-size="9">75</text>
+  <rect x="720" y="138" width="28" height="16" rx="3" fill="#8e44ad"/><text x="734" y="150" text-anchor="middle" fill="#fff" font-size="9">90</text>
 
   <!-- Stability callout -->
-  <rect x="40" y="182" width="820" height="38" rx="6" fill="#f3e5f5" stroke="#8e44ad" stroke-width="1"/>
-  <text x="450" y="200" text-anchor="middle" fill="#6a1b9a" font-size="11" font-weight="bold">Stability in action: 802 and 2 both have tens digit 0. 802 came before 2 in Pass 1 output, so 802 stays first.</text>
-  <text x="450" y="216" text-anchor="middle" fill="#6a1b9a" font-size="11">Similarly, 170 and 75 both have tens digit 7. Their ones-digit order (0 before 5) is preserved.</text>
+  <rect x="430" y="162" width="440" height="56" rx="6" fill="#f3e5f5" stroke="#8e44ad" stroke-width="1"/>
+  <text x="435" y="180" fill="#6a1b9a" font-size="10" font-weight="bold">Stability preserved:</text>
+  <text x="435" y="194" fill="#6a1b9a" font-size="10">802 and 2 both have tens digit 0. 802 came before 2 in Pass 1, so 802 stays first.</text>
+  <text x="435" y="208" fill="#6a1b9a" font-size="10">170 and 75 both have tens digit 7. Ones order (0 before 5) preserved.</text>
 
   <!-- Pass 3: Hundreds -->
-  <rect x="20" y="244" width="860" height="120" rx="8" fill="#fff" stroke="#4a148c" stroke-width="1.5"/>
-  <text x="35" y="266" fill="#4a148c" font-size="14" font-weight="bold">Pass 3 (exp=100): Sort by hundreds digit</text>
-  <text x="340" y="266" fill="#888" font-size="11">digit = (value / 100) % 10</text>
+  <rect x="420" y="238" width="460" height="130" rx="6" fill="#e8f5e9" stroke="#27ae60" stroke-width="1"/>
+  <text x="430" y="258" fill="#1b5e20" font-size="12" font-weight="bold">Pass 3 (exp=100): digit = (value / 100) % 10</text>
 
-  <text x="40" y="290" fill="#555" font-size="11"><tspan fill="#e74c3c" font-weight="bold">8</tspan>02&#x2192;8  <tspan fill="#e74c3c" font-weight="bold">0</tspan>02&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">0</tspan>24&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">0</tspan>45&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">0</tspan>66&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">1</tspan>70&#x2192;1  <tspan fill="#e74c3c" font-weight="bold">0</tspan>75&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">0</tspan>90&#x2192;0</text>
+  <text x="430" y="278" fill="#555" font-size="10"><tspan fill="#e74c3c" font-weight="bold">8</tspan>02&#x2192;8  <tspan fill="#e74c3c" font-weight="bold">0</tspan>02&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">0</tspan>24&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">0</tspan>45&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">0</tspan>66&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">1</tspan>70&#x2192;1  <tspan fill="#e74c3c" font-weight="bold">0</tspan>75&#x2192;0  <tspan fill="#e74c3c" font-weight="bold">0</tspan>90&#x2192;0</text>
 
-  <text x="40" y="314" fill="#27ae60" font-size="11" font-weight="bold">After stable sort by hundreds:</text>
-  <rect x="310" y="302" width="26" height="20" rx="3" fill="#27ae60"/><text x="323" y="317" text-anchor="middle" fill="#fff" font-size="10">2</text>
-  <rect x="340" y="302" width="32" height="20" rx="3" fill="#27ae60"/><text x="356" y="317" text-anchor="middle" fill="#fff" font-size="10">24</text>
-  <rect x="376" y="302" width="32" height="20" rx="3" fill="#27ae60"/><text x="392" y="317" text-anchor="middle" fill="#fff" font-size="10">45</text>
-  <rect x="412" y="302" width="32" height="20" rx="3" fill="#27ae60"/><text x="428" y="317" text-anchor="middle" fill="#fff" font-size="10">66</text>
-  <rect x="448" y="302" width="32" height="20" rx="3" fill="#27ae60"/><text x="464" y="317" text-anchor="middle" fill="#fff" font-size="10">75</text>
-  <rect x="484" y="302" width="32" height="20" rx="3" fill="#27ae60"/><text x="500" y="317" text-anchor="middle" fill="#fff" font-size="10">90</text>
-  <rect x="520" y="302" width="38" height="20" rx="3" fill="#27ae60"/><text x="539" y="317" text-anchor="middle" fill="#fff" font-size="10">170</text>
-  <rect x="562" y="302" width="38" height="20" rx="3" fill="#27ae60"/><text x="581" y="317" text-anchor="middle" fill="#fff" font-size="10">802</text>
-  <text x="614" y="317" fill="#27ae60" font-size="12" font-weight="bold">sorted!</text>
+  <text x="430" y="298" fill="#27ae60" font-size="10" font-weight="bold">Result:</text>
+  <rect x="480" y="288" width="22" height="16" rx="3" fill="#27ae60"/><text x="491" y="300" text-anchor="middle" fill="#fff" font-size="9">2</text>
+  <rect x="506" y="288" width="28" height="16" rx="3" fill="#27ae60"/><text x="520" y="300" text-anchor="middle" fill="#fff" font-size="9">24</text>
+  <rect x="538" y="288" width="28" height="16" rx="3" fill="#27ae60"/><text x="552" y="300" text-anchor="middle" fill="#fff" font-size="9">45</text>
+  <rect x="570" y="288" width="28" height="16" rx="3" fill="#27ae60"/><text x="584" y="300" text-anchor="middle" fill="#fff" font-size="9">66</text>
+  <rect x="602" y="288" width="28" height="16" rx="3" fill="#27ae60"/><text x="616" y="300" text-anchor="middle" fill="#fff" font-size="9">75</text>
+  <rect x="634" y="288" width="28" height="16" rx="3" fill="#27ae60"/><text x="648" y="300" text-anchor="middle" fill="#fff" font-size="9">90</text>
+  <rect x="666" y="288" width="34" height="16" rx="3" fill="#27ae60"/><text x="683" y="300" text-anchor="middle" fill="#fff" font-size="9">170</text>
+  <rect x="704" y="288" width="34" height="16" rx="3" fill="#27ae60"/><text x="721" y="300" text-anchor="middle" fill="#fff" font-size="9">802</text>
+  <text x="750" y="300" fill="#27ae60" font-size="11" font-weight="bold">sorted!</text>
 
-  <text x="40" y="352" fill="#888" font-size="11">6 values have hundreds digit 0. Stability preserves their tens-digit ordering: 2, 24, 45, 66, 75, 90.</text>
+  <!-- Stability callout for pass 3 -->
+  <rect x="430" y="310" width="440" height="46" rx="6" fill="#e8f5e9" stroke="#27ae60" stroke-width="1"/>
+  <text x="435" y="328" fill="#1b5e20" font-size="10" font-weight="bold">Stability preserved:</text>
+  <text x="435" y="342" fill="#1b5e20" font-size="10">6 values have hundreds digit 0. Their tens-digit order is preserved: 2, 24, 45, 66, 75, 90.</text>
 
   <!-- Key insights -->
-  <rect x="20" y="378" width="860" height="106" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
-  <text x="450" y="400" text-anchor="middle" fill="#1a1a2e" font-size="14" font-weight="bold">Why Stability Matters in Radix Sort</text>
-  <text x="40" y="424" fill="#333" font-size="12">&#x2022; Each pass only looks at <tspan font-weight="bold">one digit</tspan>. Elements with the same digit at that position must keep their relative order from previous passes.</text>
-  <text x="40" y="446" fill="#333" font-size="12">&#x2022; Without stability, Pass 2 would <tspan font-weight="bold">scramble</tspan> the ones-digit ordering from Pass 1. The final result would be wrong.</text>
-  <text x="40" y="468" fill="#333" font-size="12">&#x2022; This is why radix sort uses <tspan font-weight="bold">counting sort</tspan> (stable) as its sub-sort, not selection sort or quick sort (unstable).</text>
+  <rect x="20" y="382" width="860" height="80" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="450" y="404" text-anchor="middle" fill="#1a1a2e" font-size="14" font-weight="bold">Why Stability Matters in Radix Sort</text>
+  <text x="40" y="424" fill="#333" font-size="12">&#x2022; Each pass only looks at <tspan font-weight="bold">one digit</tspan>. Elements with the same digit must keep their relative order from previous passes.</text>
+  <text x="40" y="444" fill="#333" font-size="12">&#x2022; The <tspan font-weight="bold">backwards iteration</tspan> in counting_sort_by_digit is what provides stability. Forward iteration would reverse equal elements.</text>
+
+  <!-- Why unstable would break it -->
+  <rect x="20" y="474" width="860" height="44" rx="10" fill="#fce4ec" stroke="#c62828" stroke-width="1.5"/>
+  <text x="40" y="496" fill="#c62828" font-size="12" font-weight="bold">What if the sub-sort were unstable?</text>
+  <text x="40" y="512" fill="#555" font-size="11">Pass 2 would scramble the ones-digit ordering from Pass 1. After 3 passes, the array would NOT be sorted. This is why radix uses counting sort (stable), not selection sort or quick sort.</text>
+
+  <!-- Footer note -->
+  <rect x="20" y="530" width="860" height="36" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="450" y="554" text-anchor="middle" fill="#333" font-size="12">After d passes (one per digit), every digit position has been sorted. The array is fully sorted.</text>
 </svg>
