@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" font-family="'Segoe UI', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 802" font-family="'Segoe UI', Arial, sans-serif">
   <rect width="100%" height="100%" fill="white"/>
 
   <!-- Title -->
@@ -23,72 +23,83 @@
   <rect x="412" y="70" width="46" height="26" rx="4" fill="#6a1b9a"/><text x="435" y="88" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">2</text>
   <rect x="464" y="70" width="46" height="26" rx="4" fill="#6a1b9a"/><text x="487" y="88" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">66</text>
 
+  <!-- Step 0: Determine d and k -->
+  <rect x="20" y="114" width="860" height="90" rx="8" fill="#fff" stroke="#4a148c" stroke-width="1.5"/>
+  <text x="35" y="136" fill="#4a148c" font-size="14" font-weight="bold">Step 0: Determine d (passes) and k (base)</text>
+  <text x="380" y="136" fill="#888" font-size="11">Scan all n elements once: O(n)</text>
+
+  <text x="35" y="158" fill="#555" font-size="12">Find max value: scan 170, 45, 75, 90, 802, 24, 2, 66 &#x2192; max = <tspan font-weight="bold" fill="#4a148c">802</tspan></text>
+  <rect x="530" y="144" width="330" height="28" rx="6" fill="#f3e5f5" stroke="#4a148c" stroke-width="1"/>
+  <text x="540" y="163" fill="#4a148c" font-size="12"><tspan font-weight="bold">d</tspan> = digits in 802 = <tspan font-weight="bold" fill="#c62828">3</tspan> passes&#xA0;&#xA0;&#xA0;<tspan font-weight="bold">k</tspan> = base 10 (digits 0-9) = <tspan font-weight="bold" fill="#c62828">10</tspan></text>
+
+  <text x="35" y="194" fill="#8e44ad" font-size="11" font-weight="bold">LSD (Least Significant Digit first): ones &#x2192; tens &#x2192; hundreds. Stability preserves earlier passes.</text>
+
   <!-- PASS 1: Ones digit -->
-  <rect x="20" y="114" width="860" height="130" rx="8" fill="#fff" stroke="#6a1b9a" stroke-width="1.5"/>
-  <text x="35" y="136" fill="#6a1b9a" font-size="14" font-weight="bold">Pass 1: Sort by ones digit</text>
-  <text x="280" y="136" fill="#888" font-size="11">digit = value % 10</text>
+  <rect x="20" y="216" width="860" height="130" rx="8" fill="#fff" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="35" y="238" fill="#6a1b9a" font-size="14" font-weight="bold">Pass 1: Sort by ones digit</text>
+  <text x="280" y="238" fill="#888" font-size="11">digit = value % 10</text>
 
   <!-- Digit extraction -->
-  <text x="40" y="160" fill="#555" font-size="11">17<tspan font-weight="bold" fill="#e74c3c">0</tspan> &#x2192; 0 &#xA0;&#xA0; 4<tspan font-weight="bold" fill="#e74c3c">5</tspan> &#x2192; 5 &#xA0;&#xA0; 7<tspan font-weight="bold" fill="#e74c3c">5</tspan> &#x2192; 5 &#xA0;&#xA0; 9<tspan font-weight="bold" fill="#e74c3c">0</tspan> &#x2192; 0 &#xA0;&#xA0; 80<tspan font-weight="bold" fill="#e74c3c">2</tspan> &#x2192; 2 &#xA0;&#xA0; 2<tspan font-weight="bold" fill="#e74c3c">4</tspan> &#x2192; 4 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">2</tspan> &#x2192; 2 &#xA0;&#xA0; 6<tspan font-weight="bold" fill="#e74c3c">6</tspan> &#x2192; 6</text>
+  <text x="40" y="262" fill="#555" font-size="11">17<tspan font-weight="bold" fill="#e74c3c">0</tspan> &#x2192; 0 &#xA0;&#xA0; 4<tspan font-weight="bold" fill="#e74c3c">5</tspan> &#x2192; 5 &#xA0;&#xA0; 7<tspan font-weight="bold" fill="#e74c3c">5</tspan> &#x2192; 5 &#xA0;&#xA0; 9<tspan font-weight="bold" fill="#e74c3c">0</tspan> &#x2192; 0 &#xA0;&#xA0; 80<tspan font-weight="bold" fill="#e74c3c">2</tspan> &#x2192; 2 &#xA0;&#xA0; 2<tspan font-weight="bold" fill="#e74c3c">4</tspan> &#x2192; 4 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">2</tspan> &#x2192; 2 &#xA0;&#xA0; 6<tspan font-weight="bold" fill="#e74c3c">6</tspan> &#x2192; 6</text>
 
   <!-- Result after pass 1 -->
-  <text x="40" y="186" fill="#555" font-size="12" font-weight="bold">After stable sort by ones:</text>
-  <rect x="280" y="172" width="46" height="26" rx="4" fill="#9b59b6"/><text x="303" y="190" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">170</text>
-  <rect x="332" y="172" width="46" height="26" rx="4" fill="#9b59b6"/><text x="355" y="190" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">90</text>
-  <rect x="384" y="172" width="46" height="26" rx="4" fill="#9b59b6"/><text x="407" y="190" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">802</text>
-  <rect x="436" y="172" width="46" height="26" rx="4" fill="#9b59b6"/><text x="459" y="190" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">2</text>
-  <rect x="488" y="172" width="46" height="26" rx="4" fill="#9b59b6"/><text x="511" y="190" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">24</text>
-  <rect x="540" y="172" width="46" height="26" rx="4" fill="#9b59b6"/><text x="563" y="190" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">45</text>
-  <rect x="592" y="172" width="46" height="26" rx="4" fill="#9b59b6"/><text x="615" y="190" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">75</text>
-  <rect x="644" y="172" width="46" height="26" rx="4" fill="#9b59b6"/><text x="667" y="190" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">66</text>
+  <text x="40" y="288" fill="#555" font-size="12" font-weight="bold">After stable sort by ones:</text>
+  <rect x="280" y="274" width="46" height="26" rx="4" fill="#9b59b6"/><text x="303" y="292" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">170</text>
+  <rect x="332" y="274" width="46" height="26" rx="4" fill="#9b59b6"/><text x="355" y="292" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">90</text>
+  <rect x="384" y="274" width="46" height="26" rx="4" fill="#9b59b6"/><text x="407" y="292" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">802</text>
+  <rect x="436" y="274" width="46" height="26" rx="4" fill="#9b59b6"/><text x="459" y="292" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">2</text>
+  <rect x="488" y="274" width="46" height="26" rx="4" fill="#9b59b6"/><text x="511" y="292" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">24</text>
+  <rect x="540" y="274" width="46" height="26" rx="4" fill="#9b59b6"/><text x="563" y="292" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">45</text>
+  <rect x="592" y="274" width="46" height="26" rx="4" fill="#9b59b6"/><text x="615" y="292" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">75</text>
+  <rect x="644" y="274" width="46" height="26" rx="4" fill="#9b59b6"/><text x="667" y="292" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">66</text>
 
-  <text x="40" y="230" fill="#888" font-size="11">Ones digits in order: 0, 0, 2, 2, 4, 5, 5, 6 &#x2714;</text>
+  <text x="40" y="332" fill="#888" font-size="11">Ones digits in order: 0, 0, 2, 2, 4, 5, 5, 6 &#x2714;</text>
 
   <!-- PASS 2: Tens digit -->
-  <rect x="20" y="250" width="860" height="130" rx="8" fill="#fff" stroke="#8e44ad" stroke-width="1.5"/>
-  <text x="35" y="272" fill="#8e44ad" font-size="14" font-weight="bold">Pass 2: Sort by tens digit</text>
-  <text x="280" y="272" fill="#888" font-size="11">digit = (value / 10) % 10</text>
+  <rect x="20" y="352" width="860" height="130" rx="8" fill="#fff" stroke="#8e44ad" stroke-width="1.5"/>
+  <text x="35" y="374" fill="#8e44ad" font-size="14" font-weight="bold">Pass 2: Sort by tens digit</text>
+  <text x="280" y="374" fill="#888" font-size="11">digit = (value / 10) % 10</text>
 
-  <text x="40" y="296" fill="#555" font-size="11">1<tspan font-weight="bold" fill="#e74c3c">7</tspan>0 &#x2192; 7 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">9</tspan>0 &#x2192; 9 &#xA0;&#xA0; 8<tspan font-weight="bold" fill="#e74c3c">0</tspan>2 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>2 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">2</tspan>4 &#x2192; 2 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">4</tspan>5 &#x2192; 4 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">7</tspan>5 &#x2192; 7 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">6</tspan>6 &#x2192; 6</text>
+  <text x="40" y="398" fill="#555" font-size="11">1<tspan font-weight="bold" fill="#e74c3c">7</tspan>0 &#x2192; 7 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">9</tspan>0 &#x2192; 9 &#xA0;&#xA0; 8<tspan font-weight="bold" fill="#e74c3c">0</tspan>2 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>2 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">2</tspan>4 &#x2192; 2 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">4</tspan>5 &#x2192; 4 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">7</tspan>5 &#x2192; 7 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">6</tspan>6 &#x2192; 6</text>
 
-  <text x="40" y="322" fill="#555" font-size="12" font-weight="bold">After stable sort by tens:</text>
-  <rect x="280" y="308" width="46" height="26" rx="4" fill="#8e44ad"/><text x="303" y="326" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">802</text>
-  <rect x="332" y="308" width="46" height="26" rx="4" fill="#8e44ad"/><text x="355" y="326" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">2</text>
-  <rect x="384" y="308" width="46" height="26" rx="4" fill="#8e44ad"/><text x="407" y="326" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">24</text>
-  <rect x="436" y="308" width="46" height="26" rx="4" fill="#8e44ad"/><text x="459" y="326" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">45</text>
-  <rect x="488" y="308" width="46" height="26" rx="4" fill="#8e44ad"/><text x="511" y="326" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">66</text>
-  <rect x="540" y="308" width="46" height="26" rx="4" fill="#8e44ad"/><text x="563" y="326" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">170</text>
-  <rect x="592" y="308" width="46" height="26" rx="4" fill="#8e44ad"/><text x="615" y="326" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">75</text>
-  <rect x="644" y="308" width="46" height="26" rx="4" fill="#8e44ad"/><text x="667" y="326" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">90</text>
+  <text x="40" y="424" fill="#555" font-size="12" font-weight="bold">After stable sort by tens:</text>
+  <rect x="280" y="410" width="46" height="26" rx="4" fill="#8e44ad"/><text x="303" y="428" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">802</text>
+  <rect x="332" y="410" width="46" height="26" rx="4" fill="#8e44ad"/><text x="355" y="428" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">2</text>
+  <rect x="384" y="410" width="46" height="26" rx="4" fill="#8e44ad"/><text x="407" y="428" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">24</text>
+  <rect x="436" y="410" width="46" height="26" rx="4" fill="#8e44ad"/><text x="459" y="428" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">45</text>
+  <rect x="488" y="410" width="46" height="26" rx="4" fill="#8e44ad"/><text x="511" y="428" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">66</text>
+  <rect x="540" y="410" width="46" height="26" rx="4" fill="#8e44ad"/><text x="563" y="428" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">170</text>
+  <rect x="592" y="410" width="46" height="26" rx="4" fill="#8e44ad"/><text x="615" y="428" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">75</text>
+  <rect x="644" y="410" width="46" height="26" rx="4" fill="#8e44ad"/><text x="667" y="428" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">90</text>
 
-  <text x="40" y="366" fill="#888" font-size="11">Tens digits in order: 0, 0, 2, 4, 6, 7, 7, 9 &#x2714; &#xA0;&#xA0;(stability preserved ones-digit ordering within same tens digit)</text>
+  <text x="40" y="468" fill="#888" font-size="11">Tens digits in order: 0, 0, 2, 4, 6, 7, 7, 9 &#x2714; &#xA0;&#xA0;(stability preserved ones-digit ordering within same tens digit)</text>
 
   <!-- PASS 3: Hundreds digit -->
-  <rect x="20" y="386" width="860" height="130" rx="8" fill="#fff" stroke="#4a148c" stroke-width="1.5"/>
-  <text x="35" y="408" fill="#4a148c" font-size="14" font-weight="bold">Pass 3: Sort by hundreds digit</text>
-  <text x="300" y="408" fill="#888" font-size="11">digit = (value / 100) % 10</text>
+  <rect x="20" y="488" width="860" height="130" rx="8" fill="#fff" stroke="#4a148c" stroke-width="1.5"/>
+  <text x="35" y="510" fill="#4a148c" font-size="14" font-weight="bold">Pass 3: Sort by hundreds digit</text>
+  <text x="300" y="510" fill="#888" font-size="11">digit = (value / 100) % 10</text>
 
-  <text x="40" y="432" fill="#555" font-size="11"><tspan font-weight="bold" fill="#e74c3c">8</tspan>02 &#x2192; 8 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>02 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>24 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>45 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>66 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">1</tspan>70 &#x2192; 1 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>75 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>90 &#x2192; 0</text>
+  <text x="40" y="534" fill="#555" font-size="11"><tspan font-weight="bold" fill="#e74c3c">8</tspan>02 &#x2192; 8 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>02 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>24 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>45 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>66 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">1</tspan>70 &#x2192; 1 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>75 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>90 &#x2192; 0</text>
 
-  <text x="40" y="458" fill="#555" font-size="12" font-weight="bold">After stable sort by hundreds:</text>
-  <rect x="310" y="444" width="42" height="26" rx="4" fill="#27ae60"/><text x="331" y="462" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">2</text>
-  <rect x="358" y="444" width="42" height="26" rx="4" fill="#27ae60"/><text x="379" y="462" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">24</text>
-  <rect x="406" y="444" width="42" height="26" rx="4" fill="#27ae60"/><text x="427" y="462" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">45</text>
-  <rect x="454" y="444" width="42" height="26" rx="4" fill="#27ae60"/><text x="475" y="462" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">66</text>
-  <rect x="502" y="444" width="42" height="26" rx="4" fill="#27ae60"/><text x="523" y="462" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">75</text>
-  <rect x="550" y="444" width="42" height="26" rx="4" fill="#27ae60"/><text x="571" y="462" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">90</text>
-  <rect x="598" y="444" width="46" height="26" rx="4" fill="#27ae60"/><text x="621" y="462" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">170</text>
-  <rect x="650" y="444" width="46" height="26" rx="4" fill="#27ae60"/><text x="673" y="462" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">802</text>
-  <text x="710" y="462" fill="#27ae60" font-size="12" font-weight="bold">&#x2190; sorted!</text>
+  <text x="40" y="560" fill="#555" font-size="12" font-weight="bold">After stable sort by hundreds:</text>
+  <rect x="310" y="546" width="42" height="26" rx="4" fill="#27ae60"/><text x="331" y="564" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">2</text>
+  <rect x="358" y="546" width="42" height="26" rx="4" fill="#27ae60"/><text x="379" y="564" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">24</text>
+  <rect x="406" y="546" width="42" height="26" rx="4" fill="#27ae60"/><text x="427" y="564" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">45</text>
+  <rect x="454" y="546" width="42" height="26" rx="4" fill="#27ae60"/><text x="475" y="564" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">66</text>
+  <rect x="502" y="546" width="42" height="26" rx="4" fill="#27ae60"/><text x="523" y="564" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">75</text>
+  <rect x="550" y="546" width="42" height="26" rx="4" fill="#27ae60"/><text x="571" y="564" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">90</text>
+  <rect x="598" y="546" width="46" height="26" rx="4" fill="#27ae60"/><text x="621" y="564" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">170</text>
+  <rect x="650" y="546" width="46" height="26" rx="4" fill="#27ae60"/><text x="673" y="564" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">802</text>
+  <text x="710" y="564" fill="#27ae60" font-size="12" font-weight="bold">&#x2190; sorted!</text>
 
-  <text x="40" y="502" fill="#888" font-size="11">3 passes (d=3 digits), each using stable counting sort on digits 0&#x2013;9 (k=10). Total: O(3 &#xD7; (8+10)) = O(54)</text>
+  <text x="40" y="604" fill="#888" font-size="11">3 passes (d=3 digits), each using stable counting sort on digits 0&#x2013;9 (k=10). Total: O(3 &#xD7; (8+10)) = O(54)</text>
 
   <!-- Key Takeaways -->
-  <rect x="20" y="524" width="860" height="160" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
-  <text x="450" y="548" text-anchor="middle" fill="#1a1a2e" font-size="16" font-weight="bold">Key Takeaways</text>
-  <text x="40" y="574" fill="#333" font-size="12">&#x2022; Each pass sorts by one digit position using <tspan font-weight="bold">stable</tspan> counting sort. Stability is critical &#x2014; it preserves the ordering from previous passes.</text>
-  <text x="40" y="596" fill="#333" font-size="12">&#x2022; After d passes (one per digit), every digit has been sorted &#x2014; the array is fully sorted.</text>
-  <text x="40" y="618" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">LSD (Least Significant Digit first)</tspan> is the standard approach. It works because stability ensures earlier digit orderings are preserved.</text>
-  <text x="40" y="640" fill="#333" font-size="12">&#x2022; Time: O(d &#xD7; (n + k)) where d = max digits, k = base (10). When d is constant (e.g., sorting 32-bit ints), this is O(n).</text>
-  <text x="40" y="662" fill="#333" font-size="12">&#x2022; Works on <tspan font-weight="bold">non-negative integers</tspan>. Negative values need special handling (sort absolute values, then reverse negatives).</text>
+  <rect x="20" y="626" width="860" height="160" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="450" y="650" text-anchor="middle" fill="#1a1a2e" font-size="16" font-weight="bold">Key Takeaways</text>
+  <text x="40" y="676" fill="#333" font-size="12">&#x2022; Each pass sorts by one digit position using <tspan font-weight="bold">stable</tspan> counting sort. Stability is critical &#x2014; it preserves the ordering from previous passes.</text>
+  <text x="40" y="698" fill="#333" font-size="12">&#x2022; After d passes (one per digit), every digit has been sorted &#x2014; the array is fully sorted.</text>
+  <text x="40" y="720" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">LSD (Least Significant Digit first)</tspan> is the standard approach. It works because stability ensures earlier digit orderings are preserved.</text>
+  <text x="40" y="742" fill="#333" font-size="12">&#x2022; Time: O(d &#xD7; (n + k)) where d = max digits, k = base (10). When d is constant (e.g., sorting 32-bit ints), this is O(n).</text>
+  <text x="40" y="764" fill="#333" font-size="12">&#x2022; Works on <tspan font-weight="bold">non-negative integers</tspan>. Negative values need special handling (sort absolute values, then reverse negatives).</text>
 </svg>
