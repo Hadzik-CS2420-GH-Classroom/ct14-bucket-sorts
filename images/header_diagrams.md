@@ -43,3 +43,10 @@ Conceptual diagrams referenced from `BucketSorts.h`.
 *`BucketSorts.h` -- time, space, stability, and best-use at a glance*
 
 ![Non-Comparison Sorts -- Side-by-Side Comparison](svgs/bucket_sorts_comparison.svg)
+
+---
+
+## 7. When to Use Non-Comparison Sorts
+*`BucketSorts.h` -- integers only, good vs bad use cases, quick decision guide*
+
+![When to Use Non-Comparison Sorts](svgs/when_to_use_noncomparison.svg)

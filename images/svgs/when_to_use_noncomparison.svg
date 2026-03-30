@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 520" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="430" y="30" text-anchor="middle" fill="#1a1a1a" font-size="24" font-weight="bold">When to Use Non-Comparison Sorts</text>
+  <text x="430" y="52" text-anchor="middle" fill="#555" font-size="13">They only work on integer-like keys because they use values as array indices.</text>
+
+  <!-- Core requirement box -->
+  <rect x="30" y="68" width="800" height="48" rx="10" fill="#fce4ec" stroke="#c62828" stroke-width="2"/>
+  <text x="430" y="88" text-anchor="middle" fill="#c62828" font-size="14" font-weight="bold">Non-comparison sorts CANNOT sort strings, floats, or objects.</text>
+  <text x="430" y="106" text-anchor="middle" fill="#c62828" font-size="12">They need integer values to use as array indices: count[value] or bucket[value / range].</text>
+
+  <!-- Good examples (left) -->
+  <rect x="30" y="130" width="390" height="240" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="225" y="154" text-anchor="middle" fill="#1b5e20" font-size="14" font-weight="bold">Works great</text>
+
+  <text x="50" y="180" fill="#2e7d32" font-size="12" font-weight="bold">Exam scores (0-100)</text>
+  <text x="50" y="196" fill="#555" font-size="11">Counting sort: k = 101 slots. Tiny array, O(n) time.</text>
+
+  <text x="50" y="220" fill="#2e7d32" font-size="12" font-weight="bold">Student ages (18-65)</text>
+  <text x="50" y="236" fill="#555" font-size="11">Counting sort: k = 48 slots. Trivial memory cost.</text>
+
+  <text x="50" y="260" fill="#2e7d32" font-size="12" font-weight="bold">Employee IDs (6-digit numbers)</text>
+  <text x="50" y="276" fill="#555" font-size="11">Radix sort: d = 6, k = 10. Six passes of counting sort.</text>
+
+  <text x="50" y="300" fill="#2e7d32" font-size="12" font-weight="bold">Race finish times in milliseconds</text>
+  <text x="50" y="316" fill="#555" font-size="11">Convert to int (ms), then counting sort. k = range of times.</text>
+
+  <text x="50" y="340" fill="#2e7d32" font-size="12" font-weight="bold">ZIP codes (5-digit)</text>
+  <text x="50" y="356" fill="#555" font-size="11">Radix sort: d = 5, k = 10. Fast and stable.</text>
+
+  <!-- Bad examples (right) -->
+  <rect x="440" y="130" width="390" height="240" rx="8" fill="#fce4ec" stroke="#c62828" stroke-width="1.5"/>
+  <text x="635" y="154" text-anchor="middle" fill="#b71c1c" font-size="14" font-weight="bold">Use comparison sort instead</text>
+
+  <text x="460" y="180" fill="#c62828" font-size="12" font-weight="bold">Names / strings</text>
+  <text x="460" y="196" fill="#555" font-size="11">Can't index an array with "Alice". Use quick sort or merge sort.</text>
+
+  <text x="460" y="220" fill="#c62828" font-size="12" font-weight="bold">Floating-point numbers (3.14, 2.71)</text>
+  <text x="460" y="236" fill="#555" font-size="11">Can't use 3.14 as an array index. Use comparison sort.</text>
+
+  <text x="460" y="260" fill="#c62828" font-size="12" font-weight="bold">Objects sorted by a field (Student by GPA)</text>
+  <text x="460" y="276" fill="#555" font-size="11">Need custom comparator. Non-comparison sorts can't do this.</text>
+
+  <text x="460" y="300" fill="#c62828" font-size="12" font-weight="bold">Random 64-bit integers</text>
+  <text x="460" y="316" fill="#555" font-size="11">k = 2^64. Count array won't fit in any computer's memory.</text>
+
+  <text x="460" y="340" fill="#c62828" font-size="12" font-weight="bold">Mixed data types</text>
+  <text x="460" y="356" fill="#555" font-size="11">Non-comparison sorts need uniform integer keys. No mixed types.</text>
+
+  <!-- Decision flowchart -->
+  <rect x="30" y="384" width="800" height="126" rx="10" fill="#f4f6f7" stroke="#bdc3c7" stroke-width="1.5"/>
+  <text x="430" y="408" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">Quick Decision Guide</text>
+
+  <text x="50" y="432" fill="#333" font-size="12">1. Is your data <tspan font-weight="bold">integers</tspan> (or easily convertible to integers)?</text>
+  <text x="70" y="450" fill="#c62828" font-size="12">No &#x2192; use quick sort or merge sort (comparison sort)</text>
+
+  <text x="50" y="472" fill="#333" font-size="12">2. Is the value range <tspan font-weight="bold">k</tspan> small relative to n?</text>
+  <text x="70" y="490" fill="#2e7d32" font-size="12">Yes (k is small) &#x2192; <tspan font-weight="bold">counting sort</tspan></text>
+  <text x="350" y="490" fill="#1565c0" font-size="12">Uniform distribution? &#x2192; <tspan font-weight="bold">bucket sort</tspan></text>
+  <text x="620" y="490" fill="#6a1b9a" font-size="12">Large range, few digits? &#x2192; <tspan font-weight="bold">radix sort</tspan></text>
+  <text x="70" y="504" fill="#c62828" font-size="12">No (k is huge) &#x2192; use quick sort or merge sort</text>
+</svg>

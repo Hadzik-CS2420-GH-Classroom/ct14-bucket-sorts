@@ -9,7 +9,7 @@
 //
 // ? SEE DIAGRAM: header_diagrams.md #1 -- the three non-comparison sorts overview
 // ? SEE DIAGRAM: header_diagrams.md #2 -- what is k? the value range tradeoff
-// ? SEE DIAGRAM: header_diagrams.md #6 -- side-by-side comparison table
+// ? SEE DIAGRAM: header_diagrams.md #7 -- when to use non-comparison sorts (integers only)
 //
 // Non-comparison sorts exploit integer key properties (value range, digit
 // structure) to sort faster than O(n log n). They never compare two elements
@@ -58,5 +58,10 @@ void bucket_sort(std::vector<int>& data, int num_buckets = 10);
 //
 void radix_sort(std::vector<int>& data);
 
+
+// ? SEE DIAGRAM: header_diagrams.md #6 -- side-by-side comparison table
+
+
 // Utility
 void print_vector(const std::vector<int>& data, const std::string& label = "");
+
