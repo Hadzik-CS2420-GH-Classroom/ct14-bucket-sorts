@@ -50,3 +50,10 @@ Conceptual diagrams referenced from `BucketSorts.h`.
 *`BucketSorts.h` -- integers only, good vs bad use cases, quick decision guide*
 
 ![When to Use Non-Comparison Sorts](svgs/when_to_use_noncomparison.svg)
+
+---
+
+## 8. All 9 Sorting Algorithms: When to Use Each
+*All CTs -- comprehensive guide covering O(n^2), O(n log n), and O(n+k) sorts with best use cases and decision guide*
+
+![All 9 Sorting Algorithms: When to Use Each](svgs/all_nine_sorts_guide.svg)
