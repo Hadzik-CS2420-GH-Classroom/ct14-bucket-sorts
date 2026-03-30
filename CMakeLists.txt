@@ -7,7 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Source files (excluding main.cpp for tests)
 set(LIB_SOURCES
-    src/BucketSorts.cpp
+    src/NonComparisonSorts.cpp
 )
 
 # Main executable

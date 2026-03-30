@@ -2,7 +2,7 @@
   <rect width="100%" height="100%" fill="white"/>
 
   <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Counting Sort &#x2014; Steps 1a, 1b, 1c (Count Phase)</text>
-  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">BucketSorts.cpp::counting_sort() &#x2014; find range, allocate count array, tally each element</text>
+  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">NonComparisonSorts.cpp::counting_sort() &#x2014; find range, allocate count array, tally each element</text>
 
   <!-- Code block (left) -->
   <rect x="20" y="64" width="380" height="220" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
