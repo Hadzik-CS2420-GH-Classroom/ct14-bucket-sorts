@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "BucketSorts.h"
+#include "NonComparisonSorts.h"
 #include <vector>
 #include <algorithm>
 
