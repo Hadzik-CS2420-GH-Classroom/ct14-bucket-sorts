@@ -39,7 +39,8 @@ void bucket_sort(std::vector<int>& data, int num_buckets) {
 // ---------------------------------------------------------------------------
 //
 // ? SEE DIAGRAM: cpp_diagrams.md #5 -- Step 0 + Pass 1 Detail
-// ? SEE DIAGRAM: cpp_diagrams.md #6 -- Passes 2-3 (Stability in Action)
+// ? SEE DIAGRAM: cpp_diagrams.md #6 -- counting_sort_by_digit 4-Step Process
+// ? SEE DIAGRAM: cpp_diagrams.md #7 -- Passes 2-3 (Stability in Action)
 //
 void radix_sort(std::vector<int>& data) {
     // TODO: Implement radix sort (LSD)

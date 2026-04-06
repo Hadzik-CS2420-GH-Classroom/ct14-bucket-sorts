@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 680" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <text x="460" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">counting_sort_by_digit &#x2014; The 4-Step Process</text>
+  <text x="460" y="48" text-anchor="middle" fill="#777" font-size="12">How radix sort places whole elements using digit-based counting (Pass 1, exp=1, ones digit)</text>
+
+  <!-- Input array -->
+  <text x="30" y="76" fill="#333" font-size="13" font-weight="bold">Input:</text>
+  <rect x="85" y="62" width="38" height="22" rx="4" fill="#1565c0"/><text x="104" y="78" text-anchor="middle" fill="#fff" font-size="11">170</text>
+  <rect x="127" y="62" width="32" height="22" rx="4" fill="#1565c0"/><text x="143" y="78" text-anchor="middle" fill="#fff" font-size="11">45</text>
+  <rect x="163" y="62" width="32" height="22" rx="4" fill="#1565c0"/><text x="179" y="78" text-anchor="middle" fill="#fff" font-size="11">75</text>
+  <rect x="199" y="62" width="32" height="22" rx="4" fill="#1565c0"/><text x="215" y="78" text-anchor="middle" fill="#fff" font-size="11">90</text>
+  <rect x="235" y="62" width="38" height="22" rx="4" fill="#1565c0"/><text x="254" y="78" text-anchor="middle" fill="#fff" font-size="11">802</text>
+  <rect x="277" y="62" width="32" height="22" rx="4" fill="#1565c0"/><text x="293" y="78" text-anchor="middle" fill="#fff" font-size="11">24</text>
+  <rect x="313" y="62" width="24" height="22" rx="4" fill="#1565c0"/><text x="325" y="78" text-anchor="middle" fill="#fff" font-size="11">2</text>
+  <rect x="341" y="62" width="32" height="22" rx="4" fill="#1565c0"/><text x="357" y="78" text-anchor="middle" fill="#fff" font-size="11">66</text>
+
+  <text x="400" y="78" fill="#888" font-size="11">exp = 1 (ones digit)</text>
+
+  <!-- ===== STEP 1: Extract digits ===== -->
+  <rect x="20" y="96" width="430" height="100" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <text x="35" y="116" fill="#1565c0" font-size="13" font-weight="bold">Step 1: Extract digit = (value / exp) % 10</text>
+
+  <text x="35" y="140" fill="#555" font-size="11">170 &#x2192; <tspan fill="#c62828" font-weight="bold">0</tspan>    45 &#x2192; <tspan fill="#c62828" font-weight="bold">5</tspan>    75 &#x2192; <tspan fill="#c62828" font-weight="bold">5</tspan>    90 &#x2192; <tspan fill="#c62828" font-weight="bold">0</tspan></text>
+  <text x="35" y="160" fill="#555" font-size="11">802 &#x2192; <tspan fill="#c62828" font-weight="bold">2</tspan>    24 &#x2192; <tspan fill="#c62828" font-weight="bold">4</tspan>     2 &#x2192; <tspan fill="#c62828" font-weight="bold">2</tspan>    66 &#x2192; <tspan fill="#c62828" font-weight="bold">6</tspan></text>
+
+  <text x="35" y="184" fill="#888" font-size="10">Digits seen: 0, 5, 5, 0, 2, 4, 2, 6</text>
+
+  <!-- ===== STEP 2: Tally into count[10] ===== -->
+  <rect x="470" y="96" width="430" height="100" rx="8" fill="#f1f8e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="485" y="116" fill="#2e7d32" font-size="13" font-weight="bold">Step 2: Tally &#x2014; count[digit]++</text>
+
+  <!-- Count array boxes -->
+  <text x="485" y="140" fill="#555" font-size="10" font-weight="bold">digit:</text>
+  <text x="485" y="160" fill="#555" font-size="10" font-weight="bold">count:</text>
+
+  <!-- Digit 0 --><rect x="535" y="128" width="28" height="18" rx="3" fill="#e8f5e9" stroke="#2e7d32"/><text x="549" y="142" text-anchor="middle" fill="#333" font-size="10">0</text>
+  <rect x="535" y="148" width="28" height="18" rx="3" fill="#2e7d32"/><text x="549" y="162" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">2</text>
+  <!-- Digit 1 --><rect x="567" y="128" width="28" height="18" rx="3" fill="#e8f5e9" stroke="#ccc"/><text x="581" y="142" text-anchor="middle" fill="#aaa" font-size="10">1</text>
+  <rect x="567" y="148" width="28" height="18" rx="3" fill="#e0e0e0"/><text x="581" y="162" text-anchor="middle" fill="#888" font-size="10">0</text>
+  <!-- Digit 2 --><rect x="599" y="128" width="28" height="18" rx="3" fill="#e8f5e9" stroke="#2e7d32"/><text x="613" y="142" text-anchor="middle" fill="#333" font-size="10">2</text>
+  <rect x="599" y="148" width="28" height="18" rx="3" fill="#2e7d32"/><text x="613" y="162" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">2</text>
+  <!-- Digit 3 --><rect x="631" y="128" width="28" height="18" rx="3" fill="#e8f5e9" stroke="#ccc"/><text x="645" y="142" text-anchor="middle" fill="#aaa" font-size="10">3</text>
+  <rect x="631" y="148" width="28" height="18" rx="3" fill="#e0e0e0"/><text x="645" y="162" text-anchor="middle" fill="#888" font-size="10">0</text>
+  <!-- Digit 4 --><rect x="663" y="128" width="28" height="18" rx="3" fill="#e8f5e9" stroke="#2e7d32"/><text x="677" y="142" text-anchor="middle" fill="#333" font-size="10">4</text>
+  <rect x="663" y="148" width="28" height="18" rx="3" fill="#2e7d32"/><text x="677" y="162" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">1</text>
+  <!-- Digit 5 --><rect x="695" y="128" width="28" height="18" rx="3" fill="#e8f5e9" stroke="#2e7d32"/><text x="709" y="142" text-anchor="middle" fill="#333" font-size="10">5</text>
+  <rect x="695" y="148" width="28" height="18" rx="3" fill="#2e7d32"/><text x="709" y="162" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">2</text>
+  <!-- Digit 6 --><rect x="727" y="128" width="28" height="18" rx="3" fill="#e8f5e9" stroke="#2e7d32"/><text x="741" y="142" text-anchor="middle" fill="#333" font-size="10">6</text>
+  <rect x="727" y="148" width="28" height="18" rx="3" fill="#2e7d32"/><text x="741" y="162" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">1</text>
+  <!-- Digits 7-9 --><rect x="759" y="128" width="28" height="18" rx="3" fill="#e8f5e9" stroke="#ccc"/><text x="773" y="142" text-anchor="middle" fill="#aaa" font-size="10">7</text>
+  <rect x="759" y="148" width="28" height="18" rx="3" fill="#e0e0e0"/><text x="773" y="162" text-anchor="middle" fill="#888" font-size="10">0</text>
+  <rect x="791" y="128" width="28" height="18" rx="3" fill="#e8f5e9" stroke="#ccc"/><text x="805" y="142" text-anchor="middle" fill="#aaa" font-size="10">8</text>
+  <rect x="791" y="148" width="28" height="18" rx="3" fill="#e0e0e0"/><text x="805" y="162" text-anchor="middle" fill="#888" font-size="10">0</text>
+  <rect x="823" y="128" width="28" height="18" rx="3" fill="#e8f5e9" stroke="#ccc"/><text x="837" y="142" text-anchor="middle" fill="#aaa" font-size="10">9</text>
+  <rect x="823" y="148" width="28" height="18" rx="3" fill="#e0e0e0"/><text x="837" y="162" text-anchor="middle" fill="#888" font-size="10">0</text>
+
+  <text x="485" y="186" fill="#888" font-size="10">count[] = [2, 0, 2, 0, 1, 2, 1, 0, 0, 0]</text>
+
+  <!-- ===== STEP 3: Cumulative counts ===== -->
+  <rect x="20" y="208" width="880" height="108" rx="8" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="35" y="228" fill="#6a1b9a" font-size="13" font-weight="bold">Step 3: Cumulative counts &#x2014; count[i] += count[i-1]</text>
+  <text x="35" y="248" fill="#555" font-size="11">"How many elements have digit &#x2264; d?" &#x2014; this tells us WHERE each digit group ENDS in the output.</text>
+
+  <!-- Before -->
+  <text x="35" y="272" fill="#6a1b9a" font-size="11" font-weight="bold">Before:</text>
+  <text x="105" y="272" fill="#555" font-size="11">[2, 0, 2, 0, 1, 2, 1, 0, 0, 0]</text>
+
+  <!-- Arrow -->
+  <text x="380" y="272" fill="#6a1b9a" font-size="14">&#x2192;</text>
+
+  <!-- After -->
+  <text x="400" y="272" fill="#6a1b9a" font-size="11" font-weight="bold">After:</text>
+  <text x="455" y="272" fill="#555" font-size="11">[<tspan fill="#c62828" font-weight="bold">2</tspan>, 2, <tspan fill="#c62828" font-weight="bold">4</tspan>, 4, <tspan fill="#c62828" font-weight="bold">5</tspan>, <tspan fill="#c62828" font-weight="bold">7</tspan>, <tspan fill="#c62828" font-weight="bold">8</tspan>, 8, 8, 8]</text>
+
+  <!-- Interpretation -->
+  <text x="35" y="298" fill="#6a1b9a" font-size="10">Meaning: digit 0 elements end at index 2.  digit 2 elements end at index 4.  digit 5 elements end at index 7.  etc.</text>
+  <text x="35" y="312" fill="#6a1b9a" font-size="10" font-weight="bold">To place: output[count[digit] - 1] = element, then count[digit]--.  The "- 1" converts count to 0-based index.</text>
+
+  <!-- ===== STEP 4: Place backwards (stability) ===== -->
+  <rect x="20" y="328" width="880" height="268" rx="8" fill="#fff3e0" stroke="#e65100" stroke-width="1.5"/>
+  <text x="35" y="350" fill="#e65100" font-size="13" font-weight="bold">Step 4: Place backwards &#x2014; for (i = n-1; i &#x2265; 0; --i)</text>
+  <text x="35" y="368" fill="#555" font-size="11">Iterate input array RIGHT to LEFT. For each element: extract digit &#x2192; look up count &#x2192; place in output &#x2192; decrement count.</text>
+
+  <!-- Table header -->
+  <text x="35" y="396" fill="#333" font-size="10" font-weight="bold">i</text>
+  <text x="60" y="396" fill="#333" font-size="10" font-weight="bold">value</text>
+  <text x="110" y="396" fill="#333" font-size="10" font-weight="bold">digit</text>
+  <text x="155" y="396" fill="#333" font-size="10" font-weight="bold">count[digit]</text>
+  <text x="245" y="396" fill="#333" font-size="10" font-weight="bold">output position</text>
+  <text x="370" y="396" fill="#333" font-size="10" font-weight="bold">output[] after this step</text>
+
+  <line x1="30" y1="402" x2="890" y2="402" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- i=7: 66, digit=6, count[6]=8→7, output[7]=66 -->
+  <rect x="30" y="406" width="860" height="20" rx="0" fill="#fff8e1"/>
+  <text x="35" y="420" fill="#555" font-size="10">7</text>
+  <text x="60" y="420" fill="#1565c0" font-size="10" font-weight="bold">66</text>
+  <text x="110" y="420" fill="#c62828" font-size="10" font-weight="bold">6</text>
+  <text x="155" y="420" fill="#555" font-size="10">8 &#x2192; <tspan font-weight="bold">7</tspan></text>
+  <text x="245" y="420" fill="#e65100" font-size="10" font-weight="bold">output[7] = 66</text>
+  <text x="370" y="420" fill="#555" font-size="10">[_, _, _, _, _, _, _, <tspan fill="#e65100" font-weight="bold">66</tspan>]</text>
+
+  <!-- i=6: 2, digit=2, count[2]=4→3, output[3]=2 -->
+  <text x="35" y="440" fill="#555" font-size="10">6</text>
+  <text x="60" y="440" fill="#1565c0" font-size="10" font-weight="bold">2</text>
+  <text x="110" y="440" fill="#c62828" font-size="10" font-weight="bold">2</text>
+  <text x="155" y="440" fill="#555" font-size="10">4 &#x2192; <tspan font-weight="bold">3</tspan></text>
+  <text x="245" y="440" fill="#e65100" font-size="10" font-weight="bold">output[3] = 2</text>
+  <text x="370" y="440" fill="#555" font-size="10">[_, _, _, <tspan fill="#e65100" font-weight="bold">2</tspan>, _, _, _, 66]</text>
+
+  <!-- i=5: 24, digit=4, count[4]=5→4, output[4]=24 -->
+  <rect x="30" y="446" width="860" height="20" rx="0" fill="#fff8e1"/>
+  <text x="35" y="460" fill="#555" font-size="10">5</text>
+  <text x="60" y="460" fill="#1565c0" font-size="10" font-weight="bold">24</text>
+  <text x="110" y="460" fill="#c62828" font-size="10" font-weight="bold">4</text>
+  <text x="155" y="460" fill="#555" font-size="10">5 &#x2192; <tspan font-weight="bold">4</tspan></text>
+  <text x="245" y="460" fill="#e65100" font-size="10" font-weight="bold">output[4] = 24</text>
+  <text x="370" y="460" fill="#555" font-size="10">[_, _, _, 2, <tspan fill="#e65100" font-weight="bold">24</tspan>, _, _, 66]</text>
+
+  <!-- i=4: 802, digit=2, count[2]=3→2, output[2]=802 -->
+  <text x="35" y="480" fill="#555" font-size="10">4</text>
+  <text x="60" y="480" fill="#1565c0" font-size="10" font-weight="bold">802</text>
+  <text x="110" y="480" fill="#c62828" font-size="10" font-weight="bold">2</text>
+  <text x="155" y="480" fill="#555" font-size="10">3 &#x2192; <tspan font-weight="bold">2</tspan></text>
+  <text x="245" y="480" fill="#e65100" font-size="10" font-weight="bold">output[2] = 802</text>
+  <text x="370" y="480" fill="#555" font-size="10">[_, _, <tspan fill="#e65100" font-weight="bold">802</tspan>, 2, 24, _, _, 66]</text>
+
+  <!-- i=3: 90, digit=0, count[0]=2→1, output[1]=90 -->
+  <rect x="30" y="486" width="860" height="20" rx="0" fill="#fff8e1"/>
+  <text x="35" y="500" fill="#555" font-size="10">3</text>
+  <text x="60" y="500" fill="#1565c0" font-size="10" font-weight="bold">90</text>
+  <text x="110" y="500" fill="#c62828" font-size="10" font-weight="bold">0</text>
+  <text x="155" y="500" fill="#555" font-size="10">2 &#x2192; <tspan font-weight="bold">1</tspan></text>
+  <text x="245" y="500" fill="#e65100" font-size="10" font-weight="bold">output[1] = 90</text>
+  <text x="370" y="500" fill="#555" font-size="10">[_, <tspan fill="#e65100" font-weight="bold">90</tspan>, 802, 2, 24, _, _, 66]</text>
+
+  <!-- i=2: 75, digit=5, count[5]=7→6, output[6]=75 -->
+  <text x="35" y="520" fill="#555" font-size="10">2</text>
+  <text x="60" y="520" fill="#1565c0" font-size="10" font-weight="bold">75</text>
+  <text x="110" y="520" fill="#c62828" font-size="10" font-weight="bold">5</text>
+  <text x="155" y="520" fill="#555" font-size="10">7 &#x2192; <tspan font-weight="bold">6</tspan></text>
+  <text x="245" y="520" fill="#e65100" font-size="10" font-weight="bold">output[6] = 75</text>
+  <text x="370" y="520" fill="#555" font-size="10">[_, 90, 802, 2, 24, _, <tspan fill="#e65100" font-weight="bold">75</tspan>, 66]</text>
+
+  <!-- i=1: 45, digit=5, count[5]=6→5, output[5]=45 -->
+  <rect x="30" y="526" width="860" height="20" rx="0" fill="#fff8e1"/>
+  <text x="35" y="540" fill="#555" font-size="10">1</text>
+  <text x="60" y="540" fill="#1565c0" font-size="10" font-weight="bold">45</text>
+  <text x="110" y="540" fill="#c62828" font-size="10" font-weight="bold">5</text>
+  <text x="155" y="540" fill="#555" font-size="10">6 &#x2192; <tspan font-weight="bold">5</tspan></text>
+  <text x="245" y="540" fill="#e65100" font-size="10" font-weight="bold">output[5] = 45</text>
+  <text x="370" y="540" fill="#555" font-size="10">[_, 90, 802, 2, 24, <tspan fill="#e65100" font-weight="bold">45</tspan>, 75, 66]</text>
+
+  <!-- i=0: 170, digit=0, count[0]=1→0, output[0]=170 -->
+  <text x="35" y="560" fill="#555" font-size="10">0</text>
+  <text x="60" y="560" fill="#1565c0" font-size="10" font-weight="bold">170</text>
+  <text x="110" y="560" fill="#c62828" font-size="10" font-weight="bold">0</text>
+  <text x="155" y="560" fill="#555" font-size="10">1 &#x2192; <tspan font-weight="bold">0</tspan></text>
+  <text x="245" y="560" fill="#e65100" font-size="10" font-weight="bold">output[0] = 170</text>
+  <text x="370" y="560" fill="#e65100" font-size="10" font-weight="bold">[170, 90, 802, 2, 24, 45, 75, 66]</text>
+
+  <!-- Stability callout within step 4 -->
+  <rect x="35" y="572" width="855" height="18" rx="4" fill="#fce4ec" stroke="#c62828" stroke-width="1"/>
+  <text x="460" y="586" text-anchor="middle" fill="#c62828" font-size="10" font-weight="bold">Stability check: 170 and 90 both have digit 0. In input, 170 is at [0] and 90 is at [3]. In output: 170 at [0], 90 at [1]. Order preserved!</text>
+
+  <!-- Output array -->
+  <text x="30" y="618" fill="#27ae60" font-size="13" font-weight="bold">Result (Pass 1):</text>
+  <rect x="160" y="604" width="38" height="22" rx="4" fill="#27ae60"/><text x="179" y="620" text-anchor="middle" fill="#fff" font-size="11">170</text>
+  <rect x="202" y="604" width="32" height="22" rx="4" fill="#27ae60"/><text x="218" y="620" text-anchor="middle" fill="#fff" font-size="11">90</text>
+  <rect x="238" y="604" width="38" height="22" rx="4" fill="#27ae60"/><text x="257" y="620" text-anchor="middle" fill="#fff" font-size="11">802</text>
+  <rect x="280" y="604" width="24" height="22" rx="4" fill="#27ae60"/><text x="292" y="620" text-anchor="middle" fill="#fff" font-size="11">2</text>
+  <rect x="308" y="604" width="32" height="22" rx="4" fill="#27ae60"/><text x="324" y="620" text-anchor="middle" fill="#fff" font-size="11">24</text>
+  <rect x="344" y="604" width="32" height="22" rx="4" fill="#27ae60"/><text x="360" y="620" text-anchor="middle" fill="#fff" font-size="11">45</text>
+  <rect x="380" y="604" width="32" height="22" rx="4" fill="#27ae60"/><text x="396" y="620" text-anchor="middle" fill="#fff" font-size="11">75</text>
+  <rect x="416" y="604" width="32" height="22" rx="4" fill="#27ae60"/><text x="432" y="620" text-anchor="middle" fill="#fff" font-size="11">66</text>
+  <text x="470" y="618" fill="#888" font-size="11">Sorted by ones digit only. Passes 2-3 will sort tens and hundreds.</text>
+
+  <!-- Key insight footer -->
+  <rect x="20" y="638" width="880" height="32" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1.5"/>
+  <text x="460" y="660" text-anchor="middle" fill="#333" font-size="12"><tspan font-weight="bold">Key difference from regular counting sort:</tspan> we count DIGITS but place WHOLE ELEMENTS. The cumulative count + backwards iteration preserves stability.</text>
+</svg>

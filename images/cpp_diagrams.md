@@ -39,7 +39,14 @@ Code-block diagrams referenced from `NonComparisonSorts.cpp`.
 
 ---
 
-## 6. Radix Sort -- Passes 2-3 (Stability in Action)
+## 6. Radix Sort -- counting_sort_by_digit (The 4-Step Process)
+*`NonComparisonSorts.cpp::counting_sort_by_digit()` -- detailed walkthrough of extract, tally, cumulative, backwards placement*
+
+![counting_sort_by_digit -- 4-Step Process](svgs/radix_counting_by_digit.svg)
+
+---
+
+## 7. Radix Sort -- Passes 2-3 (Stability in Action)
 *`NonComparisonSorts.cpp::radix_sort()` -- tens and hundreds passes showing how stability preserves earlier ordering*
 
 ![Radix Sort -- Passes 2-3](svgs/radix_sort_passes.svg)
